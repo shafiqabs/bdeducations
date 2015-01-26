@@ -1,0 +1,38 @@
+district:
+    path:     /
+    defaults: { _controller: "SettingLocationBundle:District:index" }
+
+district_delete_list:
+    path:     /delete/lists
+    defaults: { _controller: "SettingLocationBundle:District:deleteList" }
+
+district_show:
+    path:     /{id}/show
+    defaults: { _controller: "SettingLocationBundle:District:show" }
+
+district_new:
+    path:     /new
+    defaults: { _controller: "SettingLocationBundle:District:new" }
+
+district_create:
+    path:     /create
+    defaults: { _controller: "SettingLocationBundle:District:create" }
+    requirements: { _method: post }
+
+district_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SettingLocationBundle:District:edit" }
+
+district_update:
+    path:     /{id}/update
+    defaults: { _controller: "SettingLocationBundle:District:update" }
+    requirements: { _method: post|put }
+
+district_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SettingLocationBundle:District:delete" }
+    requirements: { _method: post|delete }
+
+district_status:
+    path:     /{id}/status
+    defaults: { _controller: "SettingLocationBundle:District:status" }

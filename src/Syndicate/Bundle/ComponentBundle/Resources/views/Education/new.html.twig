@@ -1,0 +1,224 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <div class="portlet box grey">
+        <div class="portlet-title">
+            <div class="caption"><i class="icon-cogs"></i>Education
+
+            </div>
+            <div id="" class="date-tooltip" >
+                <i class="fa fa-calendar"></i>
+                {{ "now"|date("d-F-Y") }}
+            </div>
+        </div>
+        <div>
+
+            <ul class="page-breadcrumb breadcrumb">
+                <li>
+                    <i class="fa fa-home"></i>
+                    <a href="{{ path('homepage') }}" >Home</a>
+                    <i class="fa fa-angle-right"></i>
+                </li>
+                <li>
+                    <a href="{{ path('education') }}" >Education</a>
+                    <i class="fa fa-angle-right"></i>
+                </li>
+                <li>
+                    Create
+                </li>
+
+                <li class="pull-right custom-pull-right" >
+                    <a class="btn green-stripe active" href=""><i class="icon-plus"></i> New Create</a>
+                    <a class="btn purple-stripe blue" href="{{ path('education') }}">Listing<i class="icon-headphones"></i></a>
+
+                </li>
+            </ul>
+        </div>
+        {% include('flash-message.html.twig')  %}
+        <div class="form-group form-group-custom backgroundWhite ">
+            <div class="modal-dialog modal-dialog-form" >
+                <div class="modal-content" >
+
+                    <div class="modal-body ">
+                        <div class="portlet box">
+                            {{ form_start(form) }}
+                            {{ form_row(form._token) }}
+
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Name :</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(form.name) }}
+                                        {{ form_errors(form.name) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Establishment :</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(form.establishment) }}
+                                        {{ form_errors(form.establishment) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Institute Cheif :</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(form.instituteCheif) }}
+                                        {{ form_errors(form.instituteCheif) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Cheif Designation:</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(form.instituteCheifDesignation) }}
+                                        {{ form_errors(form.instituteCheifDesignation) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Address :</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(form.address) }}
+                                        {{ form_errors(form.address) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Thana/Upazila:</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(form.thana) }}
+                                        {{ form_errors(form.thana) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">District:</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(form.district) }}
+                                        {{ form_errors(form.district) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Hotline :</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(form.hotline) }}
+                                        {{ form_errors(form.hotline) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Phone :</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(form.phone) }}
+                                        {{ form_errors(form.phone) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Fax :</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(form.fax) }}
+                                        {{ form_errors(form.fax) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Email :</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(form.email) }}
+                                        {{ form_errors(form.email) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Contact Person :</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(form.contactPerson) }}
+                                        {{ form_errors(form.contactPerson) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Contact Designation :</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(form.contactPersonDesignation) }}
+                                        {{ form_errors(form.contactPersonDesignation) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Website :</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(form.website) }}
+                                        {{ form_errors(form.website) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Message:</label>
+                                <div class="col-md-9 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(form.overview) }}
+                                        {{ form_errors(form.overview) }}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Logo:</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(form.file) }}
+                                        {{ form_errors(form.file) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Status:</label>
+                                <div class="col-md-6">
+                                    <label class="checkbox line">
+                                        {{ form_widget(form.status) }}
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <label for="item_itemName"  class="control-label col-md-3 required"></label>
+                                <div class="col-md-6">
+                                    {{ form_widget(form.submit) }}{{ form_widget(form.reset) }}
+                                </div>
+                            </div>
+
+
+                            {{ form_end(form) }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+{% endblock %}

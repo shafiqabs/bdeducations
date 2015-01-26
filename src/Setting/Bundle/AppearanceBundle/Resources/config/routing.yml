@@ -1,0 +1,15 @@
+setting_appearance_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SettingAppearanceBundle:Default:index }
+
+SettingAppearanceBundle_menu:
+    resource: "@SettingAppearanceBundle/Resources/config/routing/menu.yml"
+    prefix:   /menu
+
+SettingAppearanceBundle_menugroup:
+    resource: "@SettingAppearanceBundle/Resources/config/routing/menugroup.yml"
+    prefix:   /menugroup
+
+SettingAppearanceBundle_menugrouping:
+    resource: "@SettingAppearanceBundle/Resources/config/routing/menugrouping.yml"
+    prefix:   /menugrouping

@@ -1,0 +1,7 @@
+syndicate_component_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SyndicateComponentBundle:Default:index }
+
+SyndicateComponentBundle_education:
+    resource: "@SyndicateComponentBundle/Resources/config/routing/education.yml"
+    prefix:   /education

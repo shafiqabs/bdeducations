@@ -1,0 +1,86 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <div class="portlet box grey">
+        <div class="portlet-title">
+            <div class="caption"><i class="icon-cogs"></i>Menu Grouping
+
+            </div>
+            <div id="" class="date-tooltip" >
+                <i class="fa fa-calendar"></i>
+                {{ "now"|date("d-F-Y") }}
+            </div>
+        </div>
+        <div>
+
+            <ul class="page-breadcrumb breadcrumb">
+                <li>
+                    <i class="fa fa-home"></i>
+                    <a href="{{ path('homepage') }}" >Home</a>
+                    <i class="fa fa-angle-right"></i>
+                </li>
+                <li>
+                    <a href="{{ path('menugrouping_edit',{'id':menuGroup.id}) }}" >Menu Grouping</a>
+                    <i class="fa fa-angle-right"></i>
+                </li>
+                <li>
+                    {{ menuGroup.name }}
+                </li>
+
+                <li class="pull-right custom-pull-right" >
+                     <a class="btn purple-stripe blue" href="{{ path('menugrouping') }}">Listing<i class="icon-headphones"></i></a>
+                </li>
+
+            </ul>
+        </div>
+        {% include('flash-message.html.twig')  %}
+        <div class="form-group form-group-custom backgroundWhite ">
+            <div class="modal-dialog modal-dialog-form" >
+                <div class="modal-content" >
+
+                    <div class="modal-body ">
+
+                        <div class="row-fluid">
+                            <div class="span6">
+                                <div class="portlet box yellow">
+                                    <div class="portlet-title">
+                                        <div class="caption"><i class="icon-comments"></i>Menu Group Name: {{ menuGroup.name }}</div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <div class="dd" id="nestable_list_3">
+                                            {{ menu|raw }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <label for="item_itemName"  class="control-label col-md-2 required"></label>
+                            <div class="col-md-9">
+                                <button class="btn btn-primary" name="setting_bundle_appearancebundle_menugrouping[submit]" id="serialize" type="submit">Submit</button><button class="btn btn-danger" name="setting_bundle_appearancebundle_menugrouping[reset]" id="setting_bundle_appearancebundle_menugrouping_reset" type="reset">Reset</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+{% block documentready %}
+
+    NestSortable.init();
+    $('#serialize').click(function(){
+    serialized = $('ol.sortable').nestedSortable('serialize');
+        $.ajax({
+            url: '{{ path('menugrouping_sorted') }}',
+            type: "POST",
+            data: serialized
+        }).done(function(data){
+            console.log(data);
+        });
+    })
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "DocudexUserBundle::extended-config-layout.html.twig" %}
+
+{% block title %} {{ parent() }} : Category Permission{% endblock %}
+
+{% block fos_user_content %}
+    <form method="post">
+    <h3>
+        Category Permission for "{{ group }}"
+        <button type="submit" class="btn blue" style="float:right"><i class="icon-check"></i> Update </button>
+    </h3>
+        <div id="category-tree" style="visibility: hidden">
+         {{ draw_category_tree(categories, selectedCategories) }}
+        </div>
+    </form>
+{% endblock fos_user_content %}
+
+
+{% block stylesheets %}
+
+    {{ parent() }}
+
+    {% stylesheets filter='cssrewrite'
+
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+{% endblock stylesheets %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    {% javascripts
+
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+{% endblock javascripts %}
+
+
+{% block documentReady %}
+   // App.initUniform();
+    $('#category-tree')
+        .checkboxTree({
+            collapseImage: '/assets/plugins/jquery-tree/images/downArrow.gif',
+            expandImage: '/assets/plugins/jquery-tree/images/rightArrow.gif'
+        })
+        .css({'visibility' : 'visible'})
+        .on('change', 'input[type=checkbox]', function(){
+          //  App.updateUniform(this);
+        })
+    ;
+
+{% endblock documentReady %}

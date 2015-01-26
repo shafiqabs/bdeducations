@@ -1,0 +1,37 @@
+syndicate_component:
+    resource: "@SyndicateComponentBundle/Resources/config/routing.yml"
+    prefix:   /
+
+web_setting:
+    resource: "@WebSettingBundle/Resources/config/routing.yml"
+    prefix:   /
+
+mobile:
+    resource: "@MobileBundle/Resources/config/routing.yml"
+    prefix:   /
+
+setting_tool:
+    resource: "@SettingToolBundle/Resources/config/routing.yml"
+    prefix:   /
+
+setting_content:
+    resource: "@SettingContentBundle/Resources/config/routing.yml"
+    prefix:   /
+
+setting_appearance:
+    resource: "@SettingAppearanceBundle/Resources/config/routing.yml"
+    prefix:   /
+
+setting_media:
+    resource: "@SettingMediaBundle/Resources/config/routing.yml"
+    prefix:   /
+
+setting_location:
+    resource: "@SettingLocationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+core_user_bundle:
+    resource: "@UserBundle/Resources/config/routing.yml"
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

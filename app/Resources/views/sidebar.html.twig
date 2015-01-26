@@ -1,0 +1,327 @@
+<ul class="page-sidebar-menu">
+<li>
+    <div class="sidebar-toggler hidden-phone">
+        {% image 'assets/img/sidebar-toggler.jpg'
+        filter='' output='/img/sidebar-toggler.jpg' %}
+        <img src="{{ asset_url }}"/>
+        {% endimage %}
+    </div>
+</li>
+<br/>
+{#{% set Route, Dashboard, User, Item, Project, Cost, Report, Category, SubCategory, OverView, PR, PO, Vendor, Upload, Received, Setting, ProjectType, Area, TOC, Budget, ItemType, CostHeader, Users, Group User = app.request.attributes.get('_route'), [" "], [" "], [" "], [" "], [" "], [" "], [" "], [" "], [" "], [" "], [" "], [" "], [" "], [" "], [" "], [" "], [" "], [" "], [" "], [" "], [" "], [" "], [" "], [" "] %}#}
+
+{#{% set Url = Route|split('_') %}#}
+{#{% if 'homepage' in Route %}{% set Dashboard = Dashboard|merge(["active"]) %}#}
+{#{% elseif 'budget' in Route %}{% set Budget = Budget|merge(["active"]) %}#}
+{#{% elseif 'document' in Route %}{% set Upload = Upload|merge(["active"]) %}#}
+{#{% elseif 'receive' in Route %}{% set Received = Received|merge(["active"]) %}#}
+{#{% elseif Url[0] == 'item' or Url[0] == 'project' or Url[0] == 'category' or Url[0] == 'area' or Url[0] == 'vendor' or Url[0] == 'terms' or Url[0] == 'sub' or Url[1] == 'header' or Url[1] == 'type' %}{% set Setting = Setting|merge(["active"]) %}#}
+{#{% elseif 'purchase_requisition' in Route %}{% set PR = PR|merge(["active"]) %}#}
+{#{% elseif 'purchase_order' in Route %}{% set PO = PO|merge(["active"]) %}#}
+{#{% elseif 'docudex_user' in Route %}{% set Users = Users|merge(["active"]) %}#}
+{#{% elseif 'fos_user_group_list' in Route %}{% set Users = Users|merge(["active"]) %}#}
+{#{% elseif 'fos_user_group_new' in Route %}{% set Users = Users|merge(["active"]) %}#}
+{#{% elseif 'fos_user_group_edit' in Route %}{% set Users = Users|merge(["active"]) %}#}
+{#{% endif %}#}
+
+{#{% if 'vendor' in Route %}{% set Vendor = Vendor|merge(["active"]) %}#}
+{#{% elseif 'terms_and_conditions' in Route %}{% set TOC = TOC|merge(["active"]) %}#}
+{#{% elseif 'item_type' in Route %}{% set ItemType = ItemType|merge(["active"]) %}#}
+{#{% elseif 'item' in Route %}{% set Item = Item|merge(["active"]) %}#}
+{#{% elseif 'project_type' in Route %}{% set ProjectType = ProjectType|merge(["active"]) %}#}
+{#{% elseif 'project' in Route %}{% set Project = Project|merge(["active"]) %}#}
+{#{% elseif 'cost_header' in Route %}{% set CostHeader = CostHeader|merge(["active"]) %}#}
+{#{% elseif 'sub_category' in Route %}{% set SubCategory = SubCategory|merge(["active"]) %}#}
+{#{% elseif 'category' in Route %}{% set Category = Category|merge(["active"]) %}#}
+{#{% elseif 'area' in Route %}{% set Area = Area|merge(["active"]) %}#}
+{#{% elseif 'docudex_user_manager' in Route %}{% set User = User|merge(["active"]) %}#}
+{#{% elseif 'fos_user_group_list' in Route %}{% set Group = Group|merge(["active"]) %}#}
+{#{% elseif 'fos_user_group_new' in Route %}{% set Group = Group|merge(["active"]) %}#}
+{#{% elseif 'fos_user_group_edit' in Route %}{% set Group = Group|merge(["active"]) %}#}
+{#{% endif %}#}
+{#{{ Route }}#}
+{#<li class="{{ Dashboard|join(" ") }}">#}
+{#<a href="/">#}
+{#<i class="fa fa-home"></i>#}
+{#<span class="title"> Dashboard </span>#}
+{#<span class="selected"></span>#}
+{#</a>#}
+{#</li>#}
+{#{% if is_granted("ROLE_PURCHASE_REQUISITION_VIEW") %}#}
+{#<li class="{{ PR|join(" ") }}">#}
+{#<a href="/purchase/requisition">#}
+{#<i class="fa fa-gift"></i>#}
+{#<span class="title">Purchase Requisition</span>#}
+{#<span class="selected"></span>#}
+{#</a>#}
+{#</li>#}
+{#{% endif %}#}
+{% set route = app.request.attributes.get('_route') %}
+
+<li class="">
+    <a href="javascript:">
+        <i class="fa fa-cogs"></i>
+        <span class="title">Tools</span>
+        <span class="arrow "></span>
+    </a>
+    <ul class="sub-menu">
+
+
+        <li class="">
+            <a href="{{ path('globaloption') }}">
+
+                <span class="title"> Manage Option </span>
+                <span class="selected"></span>
+            </a>
+        </li>
+
+        <li class="">
+            <a href="{{ path('sitesetting') }}">
+
+                <span class="title"> Manage Setting </span>
+                <span class="selected"></span>
+            </a>
+        </li>
+        <li class="">
+            <a href="{{ path('syndicate') }}">
+                <span class="title"> Syndicate </span>
+                <span class="selected"></span>
+            </a>
+        </li>
+        <li class="">
+            <a href="{{ path('syndicatemodule') }}">
+                <span class="title"> Syndicate Module </span>
+                <span class="selected"></span>
+            </a>
+        </li>
+        <li class="">
+            <a href="{{ path('module') }}">
+
+                <span class="title"> Module </span>
+                <span class="selected"></span>
+            </a>
+        </li>
+
+        <li class="">
+            <a href="{{ path('webtheme') }}">
+                <span class="title"> Web Theme </span>
+                <span class="selected"></span>
+            </a>
+        </li>
+        <li class="">
+            <a href="{{ path('mobiletheme') }}">
+                <span class="title"> Mobile Theme </span>
+                <span class="selected"></span>
+            </a>
+        </li>
+        <li class="">
+            <a href="{{ path('menugroup') }}">
+                <span class="title"> Menu Group </span>
+                <span class="selected"></span>
+            </a>
+        </li>
+
+    </ul>
+</li>
+<li class="">
+    <a href="javascript:;">
+        <i class="fa fa-cogs"></i>
+        <span class="title">Location</span>
+        <span class="selected"></span>
+    </a>
+    <ul class="sub-menu">
+
+        <li class="">
+            <a href="{{ path('division') }}">
+
+                <span class="title">Division</span>
+                <span class="selected"></span>
+            </a>
+        </li>
+        <li class="">
+            <a href="{{ path('district') }}">
+
+                <span class="title">District</span>
+                <span class="selected"></span>
+            </a>
+        </li>
+        <li class="">
+            <a href="{{ path('thana') }}">
+
+                <span class="title"> Thana/Upazilla</span>
+                <span class="selected"></span>
+            </a>
+        </li>
+
+    </ul>
+</li>
+<li {% if 'education' in route or 'homepage_modify' in route or 'contactpage_modify' in route  %}{{ 'class="active"' }}{% endif %} >
+    <a href="javascript:;">
+        <i class="fa fa-table"></i>
+        <span class="title">Manage Education</span>
+        {% if 'education' in route or  'sitesetting_modify' in route  %}
+            <span class="selected"></span>
+            <span class="arrow open"></span>
+        {% else %}
+            <span class="arrow"></span>
+        {% endif %}
+    </a>
+    <ul class="sub-menu">
+
+        <li {% if 'education' in route %}{{ 'class="active"' }}{% endif %} >
+            <a href="{{ path('education') }}">
+
+                <span class="title"> Education </span>
+                <span class="selected"></span>
+            </a>
+        </li>
+        <li {% if 'homepage_modify' in route %}{{ 'class="active"' }}{% endif %} >
+            <a href="{{ path('homepage_modify') }}">
+
+                <span class="title"> Home Page </span>
+                <span class="selected"></span>
+            </a>
+        </li>
+        <li {% if 'contactpage_modify' in route %}{{ 'class="active"' }}{% endif %} >
+            <a href="{{ path('contactpage_modify') }}">
+
+                <span class="title"> Contact us </span>
+                <span class="selected"></span>
+            </a>
+        </li>
+    </ul>
+</li>
+<li {% if 'menu' in route or  'menugrouping' in route  %}{{ 'class="active"' }}{% endif %} >
+    <a href="javascript:">
+        <i class="fa fa-sitemap"></i>
+        <span class="title">Manage Appearance</span>
+        {% if 'menu' in route or  'menugrouping' in route  %}
+            <span class="selected"></span>
+            <span class="arrow open"></span>
+        {% else %}
+            <span class="arrow"></span>
+        {% endif %}
+    </a>
+    <ul class="sub-menu">
+         <li {% if 'menu' == route %}{{ 'class="active"' }}{% endif %} >
+                <a href="{{ path('menu_manage',{'id': app.user.id}) }}">
+                    <span class="title"> Menu </span>
+                    <span class="selected"></span>
+                </a>
+         </li>
+         <li {% if 'menugrouping' == route or 'menugrouping_edit' == route or 'menugrouping_sorting' == route %}{{ 'class="active"' }}{% endif %} >
+                <a href="{{ path('menugrouping') }}">
+                    <span class="title"> Menu Grouping</span>
+                    <span class="selected"></span>
+                </a>
+         </li>
+        
+    </ul>
+</li>
+<li {% if 'globaloption_modify' in route or  'sitesetting_modify' in route  %}{{ 'class="active"' }}{% endif %} >
+    <a href="javascript:;">
+        <i class="fa fa-cogs"></i>
+        <span class="title">Manage Setting</span>
+        {% if 'globaloption_modify' in route or  'sitesetting_modify' in route  %}
+        <span class="selected"></span>
+        <span class="arrow open"></span>
+        {% else %}
+            <span class="arrow"></span>
+        {% endif %}
+
+    </a>
+    <ul class="sub-menu">
+        <li {% if 'globaloption_modify' in route %}{{ 'class="active"' }}{% endif %} >
+            <a href="{{ path('globaloption_modify') }}">
+                <span class="title">Option</span>
+                <span class="selected"></span>
+            </a>
+        </li>
+        <li {% if 'sitesetting_modify' in route %}{{ 'class="active"' }}{% endif %} >
+            <a href="{{ path('sitesetting_modify') }}">
+                <span class="title">Site setting </span>
+                <span class="selected"></span>
+            </a>
+        </li>
+
+    </ul>
+</li>
+<li {% if 'page' in route or 'syndicatecontent' in route  %}{{ 'class="active"' }}{% endif %} >
+    <a href="javascript:">
+        <i class="fa fa-briefcase"></i>
+        <span class="title">Manage Content </span>
+        {% if 'page' in route or 'syndicatecontent' in route  %}
+            <span class="selected"></span>
+            <span class="arrow open"></span>
+        {% else %}
+            <span class="arrow"></span>
+        {% endif %}
+    </a>
+    <ul class="sub-menu">
+        <li class="">
+            <a href="{{ path('page') }}">
+
+                <span class="title">Pages </span>
+                <span class="selected"></span>
+            </a>
+        </li>
+        {% if(app.user and app.user.siteSetting) %}
+            {% if(app.user and app.user.siteSetting.modules) %}
+                {% for synd in app.user.siteSetting.modules %}
+                    <li class="">
+                        <a href="{{ path(synd.moduleClass|lower) }}">
+                            <span class="title"> {{ synd.name }}</span>
+                            <span class="selected"></span>
+                        </a>
+                    </li>
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+        <li class="">
+            <a href="{{ path('syndicatecontent') }}">
+
+                <span class="title">Syndicate </span>
+                <span class="selected"></span>
+            </a>
+        </li>
+        {% if(app.user and app.user.siteSetting) %}
+            {% if(app.user and app.user.siteSetting.syndicateModules) %}
+                {% for syndmod in app.user.siteSetting.syndicateModules %}
+                    <li class="">
+                        <a href="{{ path(syndmod.moduleClass|lower) }}">
+                            <span class="title"> {{ syndmod.name }}</span>
+                            <span class="selected"></span>
+                        </a>
+                    </li>
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+
+    </ul>
+</li>
+
+<li {% if 'galleries' in route or 'galleryimage' in route  %}{{ 'class="active"' }}{% endif %} >
+    <a href="javascript:;">
+        <i class="fa fa-gift"></i>
+        <span class="title">Media</span>
+        {% if 'galleries' in route or 'galleryimage' in route  %}
+            <span class="selected"></span>
+            <span class="arrow open"></span>
+        {% else %}
+            <span class="arrow"></span>
+        {% endif %}
+    </a>
+    <ul class="sub-menu">
+
+        <li {% if 'galleries' in route or 'galleryimage' in route  %} class="active" {% endif %}>
+            <a href="{{ path('gallery') }}">
+                <span class="title">Galleries </span>
+                <span class="selected"></span>
+            </a>
+        </li>
+
+    </ul>
+</li>
+</ul>
+
+

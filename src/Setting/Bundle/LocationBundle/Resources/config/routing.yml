@@ -1,0 +1,15 @@
+setting_location_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SettingLocationBundle:Default:index }
+
+SettingLocationBundle_division:
+        resource: "@SettingLocationBundle/Resources/config/routing/division.yml"
+        prefix:   /division
+
+SettingLocationBundle_district:
+        resource: "@SettingLocationBundle/Resources/config/routing/district.yml"
+        prefix:   /district
+
+SettingLocationBundle_thana:
+        resource: "@SettingLocationBundle/Resources/config/routing/thana.yml"
+        prefix:   /thana

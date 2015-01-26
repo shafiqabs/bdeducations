@@ -1,0 +1,35 @@
+education:
+    path:     /
+    defaults: { _controller: "SyndicateComponentBundle:Education:index" }
+
+education_show:
+    path:     /{id}/show
+    defaults: { _controller: "SyndicateComponentBundle:Education:show" }
+
+education_new:
+    path:     /new
+    defaults: { _controller: "SyndicateComponentBundle:Education:new" }
+
+education_create:
+    path:     /create
+    defaults: { _controller: "SyndicateComponentBundle:Education:create" }
+    requirements: { _method: post }
+
+education_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SyndicateComponentBundle:Education:edit" }
+
+education_update:
+    path:     /{id}/update
+    defaults: { _controller: "SyndicateComponentBundle:Education:update" }
+    requirements: { _method: post|put }
+
+education_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SyndicateComponentBundle:Education:delete" }
+    requirements: { _method: post|delete }
+
+education_status:
+    path:     /{id}/status
+    defaults: { _controller: "SyndicateComponentBundle:Education:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,24 @@
+mobile:
+    path:     /mobile/{subdomain}
+    defaults: { _controller: MobileBundle:Default:index }
+
+mobile_home:
+    path:     /mobile/{subdomain}/home
+    defaults: { _controller: MobileBundle:Default:home }
+
+mobile_contact:
+    path:      /mobile/{subdomain}/contact
+    defaults: { _controller: MobileBundle:Default:contact }
+
+mobile_maps:
+    path:      /mobile/{subdomain}/maps
+    defaults: { _controller: MobileBundle:Default:maps }
+
+mobile_content:
+    path:      /mobile/{subdomain}/{slug}
+    defaults: { _controller: MobileBundle:Page:index }
+
+mobile_module_content:
+    path:      /mobile/{subdomain}/modulecontent/{module}/{id}
+    defaults: { _controller: MobileBundle:Default:moduleContent }
+

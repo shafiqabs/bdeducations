@@ -1,0 +1,155 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <div class="portlet box grey">
+        <div class="portlet-title">
+            <div class="caption"><i class="icon-cogs"></i>Module
+
+            </div>
+            <div id="" class="date-tooltip" >
+                <i class="fa fa-calendar"></i>
+                {{ "now"|date("d-F-Y") }}
+            </div>
+        </div>
+        <div>
+
+            <ul class="page-breadcrumb breadcrumb">
+                <li>
+                    <i class="fa fa-home"></i>
+                    <a href="{{ path('homepage') }}" >Home</a>
+                    <i class="fa fa-angle-right"></i>
+                </li>
+                <li>
+                    Option Setup
+                </li>
+
+            </ul>
+        </div>
+        {% include('flash-message.html.twig')  %}
+        <div class="form-group form-group-custom backgroundWhite ">
+            <div class="modal-dialog modal-dialog-form" >
+                <div class="modal-content" >
+
+                    <div class="modal-body ">
+                        <div class="portlet box">
+                            {{ form_start(edit_form) }}
+                            {{ form_row(edit_form._token) }}
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Syndication:</label>
+                                <div class="col-md-6 form-line-height">
+                                        {{ entity.syndicate.name }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Domain:</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(edit_form.domain) }}
+                                        {{ form_errors(edit_form.domain) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Sub-domain:</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(edit_form.subDomain) }}
+                                        {{ form_errors(edit_form.subDomain) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Customize design:</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(edit_form.customizeDesign) }}
+                                        {{ form_errors(edit_form.customizeDesign) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Is mobile:</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(edit_form.isMobile) }}
+                                        {{ form_errors(edit_form.isMobile) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Promotion:</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(edit_form.promotion) }}
+                                        {{ form_errors(edit_form.promotion) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">FaceBook apps:</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(edit_form.facebookApps) }}
+                                        {{ form_errors(edit_form.facebookApps) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">FaceBook URL:</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(edit_form.facebookPageUrl) }}
+                                        {{ form_errors(edit_form.facebookPageUrl) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">FaceBook ads:</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(edit_form.facebookAds) }}
+                                        {{ form_errors(edit_form.facebookAds) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Is intro:</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(edit_form.isIntro) }}
+                                        {{ form_errors(edit_form.isIntro) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Is cart:</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(edit_form.cart) }}
+                                        {{ form_errors(edit_form.cart) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <label for="item_itemName"  class="control-label col-md-3 required"></label>
+                                <div class="col-md-6">
+                                    {{ form_widget(edit_form.submit) }}{{ form_widget(edit_form.reset) }}
+                                </div>
+                            </div>
+
+
+                            {{ form_end(edit_form) }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

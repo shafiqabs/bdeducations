@@ -1,0 +1,63 @@
+setting_content_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SettingContentBundle:Default:index }
+
+SettingContentBundle_homepage:
+    resource: "@SettingContentBundle/Resources/config/routing/homepage.yml"
+    prefix:   /homepage
+
+SettingContentBundle_contactpage:
+    resource: "@SettingContentBundle/Resources/config/routing/contactpage.yml"
+    prefix:   /contactpage
+
+SettingContentBundle_page:
+    resource: "@SettingContentBundle/Resources/config/routing/page.yml"
+    prefix:   /page
+
+SettingContentBundle_news:
+    resource: "@SettingContentBundle/Resources/config/routing/news.yml"
+    prefix:   /news
+
+SettingContentBundle_blackout:
+    resource: "@SettingContentBundle/Resources/config/routing/blackout.yml"
+    prefix:   /blackout
+
+SettingContentBundle_eventcalender:
+    resource: "@SettingContentBundle/Resources/config/routing/eventcalender.yml"
+    prefix:   /eventcalender
+
+SettingContentBundle_classroutine:
+    resource: "@SettingContentBundle/Resources/config/routing/classroutine.yml"
+    prefix:   /classroutine
+
+SettingContentBundle_blog:
+    resource: "@SettingContentBundle/Resources/config/routing/blog.yml"
+    prefix:   /blog
+
+SettingContentBundle_testimonial:
+    resource: "@SettingContentBundle/Resources/config/routing/testimonial.yml"
+    prefix:   /testimonial
+
+SettingContentBundle_timeline:
+    resource: "@SettingContentBundle/Resources/config/routing/timeline.yml"
+    prefix:   /timeline
+
+SettingContentBundle_branch:
+    resource: "@SettingContentBundle/Resources/config/routing/branch.yml"
+    prefix:   /branch
+
+SettingContentBundle_syndicatecontent:
+    resource: "@SettingContentBundle/Resources/config/routing/syndicatecontent.yml"
+    prefix:   /syndicatecontent
+
+SettingContentBundle_admission:
+    resource: "@SettingContentBundle/Resources/config/routing/admission.yml"
+    prefix:   /admission
+
+SettingContentBundle_event:
+    resource: "@SettingContentBundle/Resources/config/routing/event.yml"
+    prefix:   /event
+
+SettingContentBundle_noticeboard:
+    resource: "@SettingContentBundle/Resources/config/routing/noticeboard.yml"
+    prefix:   /noticeboard

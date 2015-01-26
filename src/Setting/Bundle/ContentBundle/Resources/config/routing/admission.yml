@@ -1,0 +1,34 @@
+admission:
+    path:     /
+    defaults: { _controller: "SettingContentBundle:Admission:index" }
+
+admission_show:
+    path:     /{id}/show
+    defaults: { _controller: "SettingContentBundle:Admission:show" }
+
+admission_new:
+    path:     /new
+    defaults: { _controller: "SettingContentBundle:Admission:new" }
+
+admission_create:
+    path:     /create
+    defaults: { _controller: "SettingContentBundle:Admission:create" }
+    requirements: { _method: post }
+
+admission_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SettingContentBundle:Admission:edit" }
+
+admission_update:
+    path:     /{id}/update
+    defaults: { _controller: "SettingContentBundle:Admission:update" }
+    requirements: { _method: post|put }
+
+admission_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SettingContentBundle:Admission:delete" }
+    requirements: { _method: post|delete }
+
+admission_status:
+    path:     /{id}/status
+    defaults: { _controller: "SettingContentBundle:Admission:status" }

@@ -1,0 +1,40 @@
+thana:
+    path:     /
+    defaults: { _controller: "SettingLocationBundle:Thana:index" }
+
+thana_delete_list:
+    path:     /delete/lists
+    defaults: { _controller: "SettingLocationBundle:Thana:deleteList" }
+
+
+thana_show:
+    path:     /{id}/show
+    defaults: { _controller: "SettingLocationBundle:Thana:show" }
+
+thana_new:
+    path:     /new
+    defaults: { _controller: "SettingLocationBundle:Thana:new" }
+
+thana_create:
+    path:     /create
+    defaults: { _controller: "SettingLocationBundle:Thana:create" }
+    requirements: { _method: post }
+
+thana_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SettingLocationBundle:Thana:edit" }
+
+thana_update:
+    path:     /{id}/update
+    defaults: { _controller: "SettingLocationBundle:Thana:update" }
+    requirements: { _method: post|put }
+
+thana_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SettingLocationBundle:Thana:delete" }
+    requirements: { _method: post|delete }
+
+thana_status:
+    path:     /{id}/status
+    defaults: { _controller: "SettingLocationBundle:Thana:status" }
+

@@ -1,0 +1,15 @@
+<div class="container">
+    <h3> Blackout Dates</h3>
+    <div class="decoration"></div>
+    {{ entity.overview }}
+    <div id="blackout" class="box"></div>
+</div>
+{% block documentready %}
+    $('#blackout').multiDatesPicker({
+        dateFormat: "dd/mm/yy",
+        addDates:{{ entity.user.blackout.offBlackoutDate|json_encode|raw }}
+
+    });
+
+{% endblock %}
+

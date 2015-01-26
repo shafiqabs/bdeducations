@@ -1,0 +1,31 @@
+setting_tool_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SettingToolBundle:Default:index }
+
+SettingToolBundle_syndicate:
+        resource: "@SettingToolBundle/Resources/config/routing/syndicate.yml"
+        prefix:   /syndicate
+
+SettingToolBundle_globaloption:
+        resource: "@SettingToolBundle/Resources/config/routing/globaloption.yml"
+        prefix:   /globaloption
+
+SettingToolBundle_webtheme:
+        resource: "@SettingToolBundle/Resources/config/routing/webtheme.yml"
+        prefix:   /webtheme
+
+SettingToolBundle_mobiletheme:
+        resource: "@SettingToolBundle/Resources/config/routing/mobiletheme.yml"
+        prefix:   /mobiletheme
+
+SettingToolBundle_sitesetting:
+        resource: "@SettingToolBundle/Resources/config/routing/sitesetting.yml"
+        prefix:   /sitesetting
+
+SettingToolBundle_syndicatemodule:
+        resource: "@SettingToolBundle/Resources/config/routing/syndicatemodule.yml"
+        prefix:   /syndicatemodule
+
+SettingToolBundle_module:
+        resource: "@SettingToolBundle/Resources/config/routing/module.yml"
+        prefix:   /module

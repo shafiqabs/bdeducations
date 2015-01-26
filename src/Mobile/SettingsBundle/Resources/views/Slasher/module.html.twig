@@ -1,0 +1,58 @@
+{% extends ':mobile/slasher:base.html.twig' %}
+{% block body %}
+    {{ include('mobile/slasher/header.html.twig')}}
+    <div class="page-header-clear"></div>
+    <div class="content">
+        {% if ( moduleName == 'News') %}
+            {{ include('@Mobile/Module/news.html.twig')}}
+        {% elseif( moduleName == 'Blog' ) %}
+            {{ include('@Mobile/Module/blog.html.twig')}}
+        {% elseif( moduleName == 'Testimonial' ) %}
+            {{ include('@Mobile/Module/testimonial.html.twig')}}
+        {% elseif( moduleName == 'Timeline' ) %}
+            {{ include('@Mobile/Module/timeline.html.twig')}}
+        {% elseif( moduleName == 'Branch' ) %}
+            {{ include('@Mobile/Module/branch.html.twig')}}
+        {% elseif( moduleName == 'event' ) %}
+            {{ include('@Mobile/Module/event.html.twig')}}
+        {% elseif( moduleName == 'ClassRoutine' ) %}
+            {{ include('@Mobile/Module/blackout.html.twig')}}
+        {% elseif( moduleName == 'Blackout' ) %}
+            {{ include('@Mobile/Module/blackout.html.twig')}}
+        {% elseif( moduleName == 'NoticeBoard' ) %}
+            {{ include('@Mobile/Module/noticeboard.html.twig')}}
+        {% elseif( moduleName == 'Admission' ) %}
+            {{ include('@Mobile/Module/admission.html.twig')}}
+        {% else %}
+            {{ include('@Mobile/Module/default.html.twig')}}
+        {% endif %}
+
+    </div>
+{% endblock %}
+{% block documentready %}
+    $('#blackout').multiDatesPicker({
+        dateFormat: "dd/mm/yy",
+        addDates:{{ entity.user.blackout.offBlackoutDate|json_encode|raw }}
+    });
+
+    $("#demo3").bootstrapNews({
+        newsPerPage: 3,
+        autoplay: false,
+
+        onToDo: function () {
+        //console.log(this);
+        }
+    });
+
+    $('.moduleContent').bind('click', function(e) {
+
+        var self = $(this);
+        $('#element_to_pop_up').bPopup({
+            contentContainer:'.module',
+            loadUrl:'/mobile/scholistic/modulecontent/news/'+self.data('bpopup')
+        });
+
+    });
+{% endblock %}
+
+

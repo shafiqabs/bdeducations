@@ -1,0 +1,12 @@
+
+
+<div class="header">
+    <a href="javascript:" class="show-navigation"></a>
+    <a href="javascript:" class="hide-navigation"></a>
+    <img src="/{{ entity.webPath }}" onclick="window.location='{{ path('mobile_home',{'subdomain': entity.user.globalOption.subDomain }) }}'" class="page-logo" alt="/{{ entity.name }}">
+</div>
+<div class="navigation">
+    <nav id="menu" class="left">
+        {{ menu|raw }}
+    </nav>
+</div>

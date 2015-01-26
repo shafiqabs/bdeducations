@@ -1,0 +1,65 @@
+
+<ul data-role="listview">
+    <li data-icon="delete"><a href="#" data-rel="close">Close</a></li>
+    <li data-icon="back"><a href="#demo-intro" data-rel="back">Demo intro</a></li>
+
+
+    {% for menu in menus %}
+
+        {% if(menu.menuGroup.id == 2) %}
+
+        <li data-role="collapsible" data-inset="false" data-iconpos="right">
+
+            <h3>{{ menu.menu.menu }}</h3>
+
+            <ul data-role="listview">
+                <li><a href="{{ path('mobile_content', { 'id': 16}) }}">Ascent Group</a></li>
+                <li><a href="{{ path('mobile_content', { 'id': 17}) }}">Scholastica Alumni Association</a></li>
+                <li><a href="{{ path('mobile_content', { 'id': 18}) }}">Jobs @ Scholastica</a></li>
+            </ul>
+
+        </li><!-- /collapsible -->
+        {% endif %}
+
+    {% endfor %}
+
+
+
+    <li data-role="collapsible" data-inset="false" data-iconpos="right">
+
+        <h3>Academics</h3>
+
+        <ul data-role="listview">
+            <li><a href="{{ path('mobile_content', { 'id': 3}) }}">Our Curriculum</a></li>
+            <li><a href="{{ path('mobile_content', { 'id': 5}) }}">School Year & Academic Calendar</a></li>
+            <li><a href="{{ path('mobile_content', { 'id': 6}) }}">Academic Services & Supports</a></li>
+        </ul>
+
+    </li><!-- /collapsible -->
+
+    <li data-role="collapsible" data-inset="false" data-iconpos="right">
+
+        <h3>Admission</h3>
+
+        <ul data-role="listview">
+            <li><a href="{{ path('mobile_content', { 'id': 7}) }}">How to Apply</a></li>
+            <li><a href="{{ path('mobile_content', { 'id': 8}) }}">Financial Assistance</a></li>
+            <li><a href="{{ path('mobile_content', { 'id': 9}) }}">Fees</a></li>
+            <li><a href="{{ path('mobile_content', { 'id': 10}) }}">FAQ (Frequently Asked Questions)</a></li>
+        </ul>
+
+    </li><!-- /collapsible -->
+    <li data-role="collapsible" data-inset="false" data-iconpos="right">
+
+        <h3>Parents & Students</h3>
+
+        <ul data-role="listview">
+            <li><a href="{{ path('mobile_content', { 'id': 12}) }}">Parents in the School Community</a></li>
+            <li><a href="{{ path('mobile_content', { 'id': 13}) }}">Student Life</a></li>
+            <li><a href="{{ path('mobile_content', { 'id': 14}) }}">Facilities</a></li>
+            <li><a href="{{ path('mobile_content', { 'id': 15}) }}">Services for Students</a></li>
+        </ul>
+
+    </li><!-- /collapsible -->
+
+</ul>

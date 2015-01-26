@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Scholastica</title>
+    {% stylesheets filter='cssrewrite'
+    'assets/mobile/css/jquery.mobile-1.4.5.min.css'
+    'assets/mobile/css/custom.css'
+    'assets/mobile/css/flexslider.css'
+    'assets/mobile/css/theme-classic.css'
+    'assets/mobile/css/crystal.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+</head>
+<body>
+<div data-role="crystal" id="testpage">
+<div data-role="header" class="ui-header-fixed">
+    <h1>Scholastica</h1>
+    <a href="#" data-rel="back">Back</a>
+    <a href="#left-panel" data-icon="bars" data-iconpos="notext" style="float: right">Menu</a>
+    {{ include('mobile/navigation.html.twig')}}
+</div><!-- /header -->
+<div data-role="panel" id="left-panel">
+    {{ include('mobile/left-nav.html.twig')}}
+</div><!-- /panel -->
+ {% block body %}{% endblock %}
+<div data-role="footer" data-position="fixed">
+    {{ include('mobile/footer.html.twig')}}
+</div>
+</div>
+{% javascripts
+'assets/mobile/js/jquery.js'
+'assets/mobile/js/jquery.mobile-1.4.5.min.js'
+'assets/mobile/js/jquery.flexslider.js'
+
+%}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+    <script>
+        $( document ).on( "pagecreate", function() {
+            $( "#theme-selector input" ).on( "change", function( event ) {
+                var themeClass = $( "#theme-selector input:checked" ).attr( "id" );
+                $( "#testpage" ).removeClass( "ui-page-theme-a ui-page-theme-b" ).addClass( "ui-page-theme-" + themeClass );
+                $( "#ui-body-test" ).removeClass( "ui-body-a ui-body-b" ).addClass( "ui-body-" + themeClass );
+                $( "#ui-bar-test, #ui-bar-form" ).removeClass( "ui-bar-a ui-bar-b" ).addClass( "ui-bar-" + themeClass );
+                $( ".ui-collapsible-content" ).removeClass( "ui-body-a ui-body-b" ).addClass( "ui-body-" + themeClass );
+                $( ".theme" ).text( themeClass );
+            });
+            $( "#opt-shadow input" ).on( "change", function( event ) {
+                if ( $( "#on" ).prop( "checked" ) ) {
+                    $( "#testpage" ).removeClass( "noshadow" );
+                } else if ( $( "#off" ).prop( "checked" ) ) {
+                    $( "#testpage" ).addClass( "noshadow" );
+                }
+            });
+            $( "#opt-navbars input" ).on( "change", function( event ) {
+                if ( $( "#show" ).prop( "checked" ) ) {
+                    $( "#testpage .ui-navbar" ).show();
+                    $( "#testpage .ui-footer h4" ).hide();
+                } else if ( $( "#hide" ).prop( "checked" ) ) {
+                    $( "#testpage .ui-navbar" ).hide();
+                    $( "#testpage .ui-footer h4" ).show();
+                }
+            });
+        });
+
+        $(window).load(function(){
+            $('.flexslider').flexslider({
+                animation: "slide",
+                start: function(slider){
+                    $('body').removeClass('loading');
+                }
+            });
+
+        });
+
+        jQuery(document).ready(function () {
+            {% block documentready %}
+
+           // App.init();
+            {% endblock %}
+        });
+
+    </script>
+    <style>
+        .noshadow * {
+            -webkit-box-shadow: none !important;
+            -moz-box-shadow: none !important;
+            box-shadow: none !important;
+        }
+        form.ui-mini .ui-field-contain fieldset.ui-controlgroup legend small {
+            color: #666;
+        }
+    </style>
+
+</body>
+</html>

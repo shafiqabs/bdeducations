@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>{{ entity.name }}</title>
+
+    {% stylesheets filter='cssrewrite'
+
+    'assets/mobile/slasher/styles/style.css'
+    'assets/mobile/slasher/styles/framework.css'
+    'assets/module/carousel/css/owl.carousel.css'
+    'assets/module/carousel/css/owl.theme.css'
+    'assets/module/swipebox/css/swipebox.css'
+    'assets/module/swipebox/css/colorbox.css'
+    'assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.css'
+    'assets/module/pagination/css/vendor/normalize.css'
+    'assets/module/pagination/css/styles.min.css'
+    'assets/module/pagination/css/jplist-core.min.css'
+    'assets/module/pagination/css/jplist-textbox-control.min.css'
+    'assets/module/pagination/css/jplist-pagination-bundle.min.css'
+    'assets/module/pagination/css/jplist-history-bundle.min.css'
+    'assets/module/pagination/css/jplist-views-control.min.css'
+    'assets/module/pagination/css/jplist-preloader-control.min.css'
+    'assets/module/newsbox/css/site.css'
+    'assets/module/bpopup/css/bpopup.css'
+    'assets/mobile/css/custom.css'
+    'assets/mobile/css/icon.css'
+
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+</head>
+<body>
+
+<div id="preloader">
+    <div id="status">
+        <p class="center-text">
+            Loading the content...
+            <em>Loading depends on your connection speed!</em>
+        </p>
+    </div>
+</div>
+{% block body %}{% endblock %}
+{{ include('mobile/slasher/footer.html.twig')}}
+{% javascripts
+
+'assets/mobile/slasher/scripts/jquery.js'
+'assets/mobile/slasher/scripts/jqueryui.js'
+'assets/module/carousel/js/owl.carousel.min.js'
+'assets/module/swipebox/js/jquery.swipebox.js'
+'assets/module/swipebox/js/colorbox.js'
+'assets/mobile/slasher/scripts/snap.js'
+'assets/mobile/slasher/scripts/contact.js'
+'assets/mobile/slasher/scripts/framework.js'
+'assets/mobile/slasher/scripts/framework.launcher.js'
+'assets/plugins/multi-datepicker/js/jquery.ui.datepicker.js'
+'assets/plugins/multi-datepicker/js/jquery.ui.core.js'
+'assets/plugins/multi-datepicker/js/jquery-ui.multidatespicker.js'
+'assets/mobile/js/jquery.cookie.js'
+'assets/mobile/js/jquery.accordion.js'
+'assets/module/newsbox/js/jquery.bootstrap.newsbox.min.js'
+'assets/module/bpopup/js/jquery.bpopup.min.js'
+'assets/module/pagination/js/jplist-core.min.js'
+'assets/module/pagination/js/jplist.textbox-control.min.js'
+'assets/module/pagination/js/jplist.pagination-bundle.min.js'
+'assets/module/pagination/js/jplist.history-bundle.min.js'
+'assets/module/pagination/js/jplist.views-control.min.js'
+'assets/module/pagination/js/jplist.filter-dropdown-bundle.min.js'
+'assets/module/pagination/js/jplist.preloader-control.min.js'
+'assets/mobile/slasher/scripts/custom.js'
+
+%}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        {% block documentready %}{% endblock %}
+        //custom animation for open/close
+        $.fn.slideFadeToggle = function(speed, easing, callback) {
+            return this.animate({opacity: 'toggle', height: 'toggle'}, speed, easing, callback);
+        };
+
+        $('.accordion').accordion({
+            defaultOpen: 'section1',
+            cookieName: 'nav',
+            speed: 'slow',
+            animateOpen: function (elem, opts) { //replace the standard slideUp with custom function
+                elem.next().stop(true, true).slideFadeToggle(opts.speed);
+            },
+            animateClose: function (elem, opts) { //replace the standard slideDown with custom function
+                elem.next().stop(true, true).slideFadeToggle(opts.speed);
+            }
+        });
+
+    });
+</script>
+</body>
+</html>
+
+
+<!DOCTYPE HTML>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>{{ entity.name }}</title>
+
+{% stylesheets filter='cssrewrite'
+    'assets/mobile/slasher/styles/style.css'
+    'assets/mobile/slasher/styles/framework.css'
+    'assets/module/carousel/css/owl.carousel.css'
+    'assets/module/carousel/css/owl.theme.css'
+    'assets/module/swipebox/css/swipebox.css'
+    'assets/module/swipebox/css/colorbox.css'
+    'assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.css'
+    'assets/module/newsbox/css/site.css'
+    'assets/module/bpopup/css/bpopup.css'
+    'assets/mobile/css/custom.css'
+    'assets/mobile/css/icon.css'
+
+%}
+<link rel="stylesheet" href="{{ asset_url }}"/>
+{% endstylesheets %}
+</head>
+<body>
+
+<div id="preloader">
+    <div id="status">
+        <p class="center-text">
+            Loading the content...
+            <em>Loading depends on your connection speed!</em>
+        </p>
+    </div>
+</div>
+{% block body %}{% endblock %}
+{{ include('mobile/slasher/footer.html.twig')}}
+{% javascripts
+    'assets/mobile/slasher/scripts/jquery.js'
+    'assets/mobile/slasher/scripts/jqueryui.js'
+    'assets/module/carousel/js/owl.carousel.min.js'
+    'assets/module/swipebox/js/jquery.swipebox.js'
+    'assets/module/swipebox/js/colorbox.js'
+    'assets/mobile/slasher/scripts/snap.js'
+    'assets/mobile/slasher/scripts/contact.js'
+    'assets/mobile/slasher/scripts/framework.js'
+    'assets/mobile/slasher/scripts/framework.launcher.js'
+    'assets/plugins/multi-datepicker/js/jquery.ui.datepicker.js'
+    'assets/plugins/multi-datepicker/js/jquery.ui.core.js'
+    'assets/plugins/multi-datepicker/js/jquery-ui.multidatespicker.js'
+    'assets/mobile/js/jquery.cookie.js'
+    'assets/mobile/js/jquery.accordion.js'
+    'assets/module/newsbox/js/jquery.bootstrap.newsbox.min.js'
+    'assets/module/bpopup/js/jquery.bpopup.min.js'
+    'assets/mobile/slasher/scripts/custom.js'
+
+%}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        {% block documentready %}{% endblock %}
+        //custom animation for open/close
+        $.fn.slideFadeToggle = function(speed, easing, callback) {
+            return this.animate({opacity: 'toggle', height: 'toggle'}, speed, easing, callback);
+        };
+
+        $('.accordion').accordion({
+            defaultOpen: 'section1',
+            cookieName: 'nav',
+            speed: 'slow',
+            animateOpen: function (elem, opts) { //replace the standard slideUp with custom function
+                elem.next().stop(true, true).slideFadeToggle(opts.speed);
+            },
+            animateClose: function (elem, opts) { //replace the standard slideDown with custom function
+                elem.next().stop(true, true).slideFadeToggle(opts.speed);
+            }
+        });
+
+    });
+</script>
+</body>
+</html>

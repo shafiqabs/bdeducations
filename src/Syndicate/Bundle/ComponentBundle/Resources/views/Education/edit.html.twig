@@ -1,0 +1,239 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <div class="portlet box grey">
+    <div class="portlet-title">
+        <div class="caption"><i class="icon-cogs"></i>Institution
+
+        </div>
+        <div id="" class="date-tooltip" >
+            <i class="fa fa-calendar"></i>
+            {{ "now"|date("d-F-Y") }}
+        </div>
+    </div>
+    <div>
+
+        <ul class="page-breadcrumb breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="{{ path('homepage') }}" >Home</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="{{ path('education') }}" >Education</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                Create
+            </li>
+
+        </ul>
+    </div>
+    {% include('flash-message.html.twig')  %}
+    <div class="form-group form-group-custom backgroundWhite ">
+        <div class="modal-dialog modal-dialog-form" >
+            <div class="modal-content" >
+
+                <div class="modal-body ">
+                    <div class="portlet box">
+                        {{ form_start(edit_form) }}
+                        {{ form_row(edit_form._token) }}
+                        <div class="form-group">
+                            <label for="item_itemName"  class="control-label col-md-3 required">Institute Name :</label>
+                            <div class="col-md-6 form-group-error">
+                                <div class="input-icon">
+                                    {{ form_widget(edit_form.name) }}
+                                    {{ form_errors(edit_form.name) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="item_itemName"  class="control-label col-md-3 required">Establishment :</label>
+                            <div class="col-md-6 form-group-error">
+                                <div class="input-icon">
+                                    {{ form_widget(edit_form.establishment) }}
+                                    {{ form_errors(edit_form.establishment) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="item_itemName"  class="control-label col-md-3 required">Institute Cheif :</label>
+                            <div class="col-md-6 form-group-error">
+                                <div class="input-icon">
+                                    {{ form_widget(edit_form.instituteCheif) }}
+                                    {{ form_errors(edit_form.instituteCheif) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="item_itemName"  class="control-label col-md-3 required">Cheif Designation:</label>
+                            <div class="col-md-6 form-group-error">
+                                <div class="input-icon">
+                                    {{ form_widget(edit_form.instituteCheifDesignation) }}
+                                    {{ form_errors(edit_form.instituteCheifDesignation) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="item_itemName"  class="control-label col-md-3 required">Address :</label>
+                            <div class="col-md-6 form-group-error">
+                                <div class="input-icon">
+                                    {{ form_widget(edit_form.address) }}
+                                    {{ form_errors(edit_form.address) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="item_itemName"  class="control-label col-md-3 required">Thana/Upazila:</label>
+                            <div class="col-md-6 form-group-error">
+                                <div class="input-icon">
+                                    {{ form_widget(edit_form.thana) }}
+                                    {{ form_errors(edit_form.thana) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="item_itemName"  class="control-label col-md-3 required">District:</label>
+                            <div class="col-md-6 form-group-error">
+                                <div class="input-icon">
+                                    {{ form_widget(edit_form.district) }}
+                                    {{ form_errors(edit_form.district) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="item_itemName"  class="control-label col-md-3 required">Hotline :</label>
+                            <div class="col-md-6 form-group-error">
+                                <div class="input-icon">
+                                    {{ form_widget(edit_form.hotline) }}
+                                    {{ form_errors(edit_form.hotline) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="item_itemName"  class="control-label col-md-3 required">Phone :</label>
+                            <div class="col-md-6 form-group-error">
+                                <div class="input-icon">
+                                    {{ form_widget(edit_form.phone) }}
+                                    {{ form_errors(edit_form.phone) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="item_itemName"  class="control-label col-md-3 required">Fax :</label>
+                            <div class="col-md-6 form-group-error">
+                                <div class="input-icon">
+                                    {{ form_widget(edit_form.fax) }}
+                                    {{ form_errors(edit_form.fax) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="item_itemName"  class="control-label col-md-3 required">Email :</label>
+                            <div class="col-md-6 form-group-error">
+                                <div class="input-icon">
+                                    {{ form_widget(edit_form.email) }}
+                                    {{ form_errors(edit_form.email) }}
+                                </div>
+                            </div>
+                        </div>
+                      <div class="form-group">
+                            <label for="item_itemName"  class="control-label col-md-3 required">Contact Person :</label>
+                            <div class="col-md-6 form-group-error">
+                                <div class="input-icon">
+                                    {{ form_widget(edit_form.contactPerson) }}
+                                    {{ form_errors(edit_form.contactPerson) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="item_itemName"  class="control-label col-md-3 required">Contact Designation :</label>
+                            <div class="col-md-6 form-group-error">
+                                <div class="input-icon">
+                                    {{ form_widget(edit_form.contactPersonDesignation) }}
+                                    {{ form_errors(edit_form.contactPersonDesignation) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="item_itemName"  class="control-label col-md-3 required">Website :</label>
+                            <div class="col-md-6 form-group-error">
+                                <div class="input-icon">
+                                    {{ form_widget(edit_form.website) }}
+                                    {{ form_errors(edit_form.website) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="item_itemName"  class="control-label col-md-3 required">Home Slider:</label>
+                            <div class="col-md-6 form-group-error">
+                                <div class="input-icon">
+                                    {{ form_widget(edit_form.gallery) }}
+                                    {{ form_errors(edit_form.gallery) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="item_itemName"  class="control-label col-md-3 required">Logo:</label>
+                            <div class="col-md-9 form-group-error">
+                                <div class="input-icon">
+                                    <div data-provides="fileupload" class="fileupload fileupload-new">
+                                        <div style="width: 200px; height: 150px;" class="fileupload-new thumbnail">
+                                            {% if(entity.webPath) %}
+                                                <img alt="" src="/{{ entity.webPath }}">
+                                            {% else %}
+                                                <img alt="" src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image">
+                                            {% endif %}
+                                        </div>
+                                        <div style="max-width: 200px; max-height: 150px; line-height: 20px;" class="fileupload-preview fileupload-exists thumbnail"></div>
+                                        <div>
+													<span class="btn btn-file"><span class="fileupload-new">Select image</span>
+													<span class="fileupload-exists">Change</span>
+                                                        {{ form_widget(edit_form.file) }}</span>
+                                            <a data-dismiss="fileupload" class="btn fileupload-exists" href="#">Remove</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="item_itemName"  class="control-label col-md-3 required">Message:</label>
+                            <div class="col-md-9">
+                                <label class="checkbox line">
+                                    {{ form_widget(edit_form.overview) }}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="item_itemName"  class="control-label col-md-3 required">Status:</label>
+                            <div class="col-md-6">
+                                <label class="checkbox line">
+                                    {{ form_widget(edit_form.status) }}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <label for="item_itemName"  class="control-label col-md-3 required"></label>
+                            <div class="col-md-6">
+                                {{ form_widget(edit_form.submit) }}{{ form_widget(edit_form.reset) }}
+                            </div>
+                        </div>
+
+
+                        {{ form_end(edit_form) }}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    </div>
+{% endblock %}

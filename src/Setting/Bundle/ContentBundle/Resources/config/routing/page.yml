@@ -1,0 +1,44 @@
+pages:
+    path:     /listing
+    defaults: { _controller: "SettingContentBundle:Page:listing" }
+
+pages_delete:
+    path:     listing/delete
+    defaults: { _controller: "SettingContentBundle:Page:listingDelete" }
+
+page:
+    path:     /
+    defaults: { _controller: "SettingContentBundle:Page:index" }
+
+page_show:
+    path:     /{id}/show
+    defaults: { _controller: "SettingContentBundle:Page:show" }
+
+page_new:
+    path:     /new
+    defaults: { _controller: "SettingContentBundle:Page:new" }
+
+page_create:
+    path:     /create
+    defaults: { _controller: "SettingContentBundle:Page:create" }
+    requirements: { _method: post }
+
+page_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SettingContentBundle:Page:edit" }
+
+page_update:
+    path:     /{id}/update
+    defaults: { _controller: "SettingContentBundle:Page:update" }
+    requirements: { _method: post|put }
+
+page_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SettingContentBundle:Page:delete" }
+    requirements: { _method: post|delete }
+
+page_status:
+    path:     /{id}/status
+    defaults: { _controller: "SettingContentBundle:Page:status" }
+
+

@@ -1,0 +1,38 @@
+division:
+    path:     /
+    defaults: { _controller: "SettingLocationBundle:Division:index" }
+
+division_delete_list:
+    path:     /delete/lists
+    defaults: { _controller: "SettingLocationBundle:Division:deleteList" }
+
+division_show:
+    path:     /{id}/show
+    defaults: { _controller: "SettingLocationBundle:Division:show" }
+
+division_new:
+    path:     /new
+    defaults: { _controller: "SettingLocationBundle:Division:new" }
+
+division_create:
+    path:     /create
+    defaults: { _controller: "SettingLocationBundle:Division:create" }
+    requirements: { _method: post }
+
+division_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SettingLocationBundle:Division:edit" }
+
+division_update:
+    path:     /{id}/update
+    defaults: { _controller: "SettingLocationBundle:Division:update" }
+    requirements: { _method: post|put }
+
+division_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SettingLocationBundle:Division:delete" }
+    requirements: { _method: get|delete }
+
+division_status:
+    path:     /{id}/status
+    defaults: { _controller: "SettingLocationBundle:Division:status" }

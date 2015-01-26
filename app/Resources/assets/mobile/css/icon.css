@@ -1,0 +1,98 @@
+#footer-content{
+    position: fixed;
+    bottom: 0;
+    background: #a3a3a3;
+    width: 100%;
+    margin: 0;
+    height: 50px;
+    z-index: 999999;
+    overflow: visible;
+    border-top:1px solid #666;
+
+}
+
+#footer-content .icon-footer-center{
+    width: 225px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7px;
+}
+
+#footer-content .icon-footer-center a{
+    float:left;
+    margin-left:5px;
+    margin-right:5px;
+}
+
+.icon-background-white{
+    /*background-color: #FFFFFF;*/
+    background-repeat:no-repeat;
+    background-size:31px 35px;
+    height:35px;
+    width:31px;
+}
+.icon-background-white-footer{
+    /*background-color: #FFFFFF;*/
+    background-repeat:no-repeat;
+    background-size:28px 35px;
+    height:35px;
+    width:31px;
+}
+
+
+
+.facebook-footer{
+    background-image:url(../icons/calendar.png);
+}
+
+.twitter-footer{
+    background-image:url(../icons/calendar.png);
+}
+
+.icon-blackout{
+    background-image:url(../icons/calendar.png);
+}
+
+.icon-timeline{
+    background-image:url(../icons/calendar.png);
+}
+
+.icon-event-calender{
+    background-image:url(../icons/calendar.png);
+}
+
+.icon-class-routine{
+    background-image:url(../icons/calendar.png);
+}
+
+.icon-contact{
+    background-image:url(../icons/address.png);
+}
+
+.icon-calender{
+    background-image:url(../icons/calendar.png);
+}
+.icon-home{
+    background-image:url(../icons/home.png);
+}
+
+.icon-maps{
+    background-image:url(../icons/location.png);
+}
+.icon-mail{
+    background-image:url(../icons/mail.png);
+}
+
+.icon-mobile{
+    background-image:url(../icons/phone.png);
+}
+
+.icon-photo{
+    background-image:url(../icons/photo.png);
+}
+
+.icon-scroll-top{
+    background-image:url(../icons/up.png);
+
+}
+
