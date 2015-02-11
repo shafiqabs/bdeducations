@@ -1,0 +1,80 @@
+{% extends ':mobile/slasher:base.html.twig' %}
+{% block body %}
+    {{ include('mobile/slasher/header.html.twig')}}
+    <div class="page-header-clear"></div>
+    <div class="content">
+        <div class="container">
+            <h1>Admission</h1>
+            <div class="col-xs-12">
+                <ul>
+                    {% for row in entity.user.admissions %}
+                        <li>
+                            <div class="one-responsive">
+                                <div class="big-notification dark-notification">
+                                    <h4>{{ row.name }} <br/><em>{{ row.startDate|date('F j, Y') }}</em> to <em>{{ row.endDate|date('F j, Y') }}</em></h4>
+                                    <p><a href="{{ path('mobile_module',{'subdomain': entity.user.globalOption.subDomain,'module': moduleName|lower,'slug':row.slug }) }}">{{ row.content | truncate(100, true) }}</a></p>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+            <div class="decoration"></div>
+
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascriptblock %}
+    resizereinit=true;
+    menu[1] = {
+    id:'omniLeftMenu', //use unique quoted id (quoted) REQUIRED!!
+    fontsize:'100%', // express as percentage with the % sign
+    linkheight:15 ,  // linked horizontal cells height
+    hdingwidth:250 ,  // heading - non linked horizontal cells width
+    // Finished configuration. Use default values for all other settings for this particular menu (menu[1]) ///
+    menuleft:'45%',    // initial left offset - only for top menu, as pixels (can be a quoted percentage - ex: '50%')
+    keepinview:80,   // Use false (for not static) - OR - true or numeric top offset when page scrolls
+    menuspeed:20,    // Speed of menu sliding smaller is faster (interval of milliseconds)
+    menupause:500,   // How long menu stays out when mouse leaves it (in milliseconds)
+    d_colspan:3,     // Available columns in menu body as integer
+    allowtransparent:false, // true to allow page to show through menu if other bg's are transparent or border has gaps
+    barwidth:20,     // bar (the vertical cell) width
+    wrapbar:true,    // extend and wrap bar below menu for a more solid look (default false) - will revert to false for top menu
+    hdingwidth:250,  // heading - non linked horizontal cells width
+    hdingheight:25,  // heading - non linked horizontal cells height
+    hdingindent:1,   // heading - non linked horizontal cells text-indent represents ex units (@8 pixels decimals allowed)
+    linkheight:15,   // linked horizontal cells height
+    linktopad:2,     // linked horizontal cells top padding
+    borderwidth:1,   // inner border-width used for this menu
+    /////////////////////////// quote these properties: /////////////////////
+    bordercolor:'#444444', // inner border color
+    borderstyle:'solid',    // inner border style (solid, dashed, inset, etc.)
+    outbrdwidth:'0ex 0ex 0ex 0ex', // outer border-width used for this menu (top right bottom left)
+    outbrdcolor:'#444444',  // outer border color
+    outbrdstyle:'solid',     // outer border style (solid, dashed, inset, etc.)
+    barbgcolor:'#444444',   // bar (the vertical cell) background color
+    barfontweight:'normol',    // bar (the vertical cell) font weight
+    baralign:'center',       // bar (the vertical cell) right left or center text alignment
+    hdingcolor:'white',      // heading - non linked horizontal cells text color
+    hdingbgcolor:'#4d6814',  // heading - non linked horizontal cells background color
+    hdingfontweight:'normol',  // heading - non linked horizontal cells font weight
+    hdingvalign:'middle',    // heading - non linked horizontal cells vertical align (top, middle or center)
+    hdingtxtalign:'left',    // heading - non linked horizontal cells right left or center text alignment
+    linktxtalign:'left',     // linked horizontal cells right left or center text alignment
+    linktarget:'',           // default link target, leave blank for same window (other choices: _new, _top, or a window or frame name)
+    kviewtype:'fixed',       // Type of keepinview - 'fixed' utilizes fixed positioning where available, 'absolute' fluidly follows page scroll
+
+    menuItems:[ // REQUIRED!!
+    //[name, link, target, colspan, endrow?] - leave 'link' and 'target' blank to make a header
+    ["Addmission"], //create header
+    {% for  row in entity.user.admissions %}
+        {%   set name = row.name | truncate(15, true) %}
+        ["{{ name }}", "{{ path('mobile_module',{'subdomain': entity.user.globalOption.subDomain,'module': moduleName|lower,'slug':row.slug }) }}", ""],
+    {% endfor %}
+    ]}; // REQUIRED!! do not edit or remove
+    make_menus();
+{% endblock %}
+
+

@@ -70,7 +70,6 @@ class Module
 
     /**
      * @ORM\ManyToMany(targetEntity="Setting\Bundle\ToolBundle\Entity\SiteSetting", mappedBy="modules")
-     * @ORM\OrderBy({"name" = "ASC"})
      **/
 
     private $siteSettings;

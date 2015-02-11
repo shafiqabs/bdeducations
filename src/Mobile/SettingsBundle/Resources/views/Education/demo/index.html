@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="www.frebsite.nl" />
+		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+
+		<title>jQuery.mmenu demo</title>
+
+		<link type="text/css" rel="stylesheet" href="css/demo.css" />
+		<link type="text/css" rel="stylesheet" href="../src/css/jquery.mmenu.all.css" />
+
+		<script type="text/javascript" src="../src/js/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="../src/js/jquery.mmenu.min.all.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('nav#menu').mmenu();
+			});
+		</script>
+	</head>
+	<body>
+		<div id="page">
+			<div class="header">
+				<a href="#menu"></a>
+				Demo
+			</div>
+			<div class="content">
+				<p><strong>This is a demo.</strong><br />
+                    Scholastica was established in 1977 by Mrs. Yasmeen Murshed. It was founded with a mission to provide a balanced and well-rounded education for all our students, using English as the primary medium of instruction but placing equal emphasis on Bangla. Scholastica’s mission is to build curious, knowledgeable and caring young individuals, who will be equipped to tackle head-on the challenges of our modern-day “global village”. They will aspire to become responsible citizens, who will embrace and respect people from other cultures and walks of life. The customized curriculum builds the knowledge, skills and attitudes that students need to succeed in their academic and professional careers after school. Students are encouraged to challenge themselves, their peers and their teachers in a setting that gives them confidence and builds their skills to think independently.
+					Click the menu icon to open the menu.</p>
+				<p>For more demos, a tutorial, documentation and support, please visit <a href="http://mmenu.frebsite.nl" target="_blank">mmenu.frebsite.nl</a></p>			
+			</div>
+			<nav id="menu">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#about">About us</a>
+						<ul>
+							<li><a href="#about/history">History</a></li>
+							<li><a href="#about/team">The team</a>
+								<ul>
+									<li><a href="#about/team/management">Management</a></li>
+									<li><a href="#about/team/sales">Sales</a>
+                                        <ul>
+                                            <li><a href="#about/team/development">Development</a></li>
+                                            <li><a href="#about/team/development">Development2</a></li>
+                                        </ul>
+                                    </li>
+
+								</ul>
+							</li>
+							<li><a href="#about/address">Our address</a></li>
+						</ul>
+					</li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+			</nav>
+		</div>
+	</body>
+</html>

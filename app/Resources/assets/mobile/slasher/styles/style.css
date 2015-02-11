@@ -395,8 +395,8 @@ and (orientation : landscape){
 
 .page-logo{
 	width:80px;
-	margin-top:9px;
-	margin-left:20px;
+	margin-top:12px;
+	margin-left:5px;
     cursor: pointer;
 }
 
@@ -774,6 +774,20 @@ and (min-width : 768px){
 	margin-bottom:2px;
 }
 
+.contact-person {
+    background-color: #444444;
+    background-image: url("../images/misc/contact.png");
+    background-position: 3px 2px;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    color: #ffffff;
+    display: block;
+    height: 25px;
+    margin-bottom: 2px;
+    margin-top: 10px;
+    padding-left: 28px;
+    padding-top: 3px;
+}
 .contact-facebook{
 	color:#666;
 	padding-left:30px;
@@ -846,7 +860,7 @@ and (min-width : 768px){
 	font-style:normal;
 	font-weight:400;
 	display:block;
-	width:750px;
+	width:auto;
 	margin-left:auto;
 	margin-right:auto;
 }

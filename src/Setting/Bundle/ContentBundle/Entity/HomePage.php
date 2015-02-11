@@ -52,9 +52,9 @@ class HomePage
     /**
      * @var integer
      *
-     * @ORM\Column(name="sliderType", type="integer", nullable=true)
+     * @ORM\Column(name="showingListing", type="integer", nullable=true)
      */
-    private $sliderType;
+    private $showingListing;
 
     /**
      * @ORM\ManyToOne(targetEntity="Setting\Bundle\MediaBundle\Entity\PhotoGallery", inversedBy="homePage")
@@ -160,38 +160,18 @@ class HomePage
         return $this->content;
     }
 
-    /**
-     * Set sliderType
-     *
-     * @param integer $sliderType
-     * @return HomePage
-     */
-    public function setSliderType($sliderType)
-    {
-        $this->sliderType = $sliderType;
 
-        return $this;
-    }
-
-    /**
-     * Get sliderType
-     *
-     * @return integer 
-     */
-    public function getSliderType()
+     /**
+     * @return mixed
+     */public function getUser()
     {
-        return $this->sliderType;
+        return $this->user;
     }/**
- * @return mixed
- */public function getUser()
-{
-    return $this->user;
-}/**
- * @param mixed $user
- */public function setUser($user)
-{
-    $this->user = $user;
-}
+     * @param mixed $user
+     */public function setUser($user)
+    {
+        $this->user = $user;
+    }
 
     /**
      * @return mixed
@@ -358,6 +338,22 @@ class HomePage
     public function setHomeBlock($homeBlock)
     {
         $this->homeBlock = $homeBlock;
+    }
+
+    /**
+     * @return int
+     */
+    public function getShowingListing()
+    {
+        return $this->showingListing;
+    }
+
+    /**
+     * @param int $showingListing
+     */
+    public function setShowingListing($showingListing)
+    {
+        $this->showingListing = $showingListing;
     }
 
 

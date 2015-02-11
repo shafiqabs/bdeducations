@@ -146,6 +146,16 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="item_itemName"  class="control-label col-md-3 required">Office Hour :</label>
+                                <div class="col-md-6 form-group-error">
+                                    <div class="input-icon">
+                                        {{ form_widget(form.officeHour) }}
+                                        {{ form_errors(form.officeHour) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="item_itemName"  class="control-label col-md-3 required">Contact Person :</label>
                                 <div class="col-md-6 form-group-error">
                                     <div class="input-icon">

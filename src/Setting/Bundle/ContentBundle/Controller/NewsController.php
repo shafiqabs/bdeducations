@@ -81,6 +81,7 @@ class NewsController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity ->setUser($user);
+            $entity->setSlug($this->get('setting.menuSettingRepo')->urlSlug($entity->getName()));
             $entity->upload();
             $em->persist($entity);
             $em->flush();
@@ -231,6 +232,7 @@ class NewsController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $entity->setSlug($this->get('setting.menuSettingRepo')->urlSlug($entity->getName()));
             $entity->upload();
             $em->flush();
             $this->get('session')->getFlashBag()->add(

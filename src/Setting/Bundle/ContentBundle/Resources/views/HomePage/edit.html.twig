@@ -69,9 +69,11 @@
                                                 <input type="text" id="caption" name="blockName[]" required="required" class="form-control input-sm " placeholder="Enter image caption" value="{{ homeBlock.name }}">
                                                 <select class="select form-control input-sm clone-block-select" name="menu[]" >
                                                     <option>Select target path</option>
+                                                    {% if(menus) %}
                                                     {% for nav in menus %}
-                                                        <option {% if(homeBlock.menu.id == nav.id ) %} selected="selected" {% endif %} value="{{ nav.id }}" >{{ nav.menu }}</option>
+                                                        <option {% if(homeBlock.menu.id|default(0) == nav.id|default(0) ) %} selected="selected" {% endif %} value="{{ nav.id }}" >{{ nav.menu }}</option>
                                                     {% endfor %}
+                                                    {% endif %}
                                                 </select>
                                                 <input type="checkbox" class="checker popovers" data-trigger="hover"  data-content="Are you remove image, Please click here." data-original-title="Remove image" name="removeId[]"  value="{{ homeBlock.id }}">Remove
                                             </div>
@@ -89,6 +91,7 @@
 
                                     <div class="col-md-5 form-group-error">
                                         <div class="input-icon">
+                                            <input type="hidden" name="blockId[]"  value="">
                                             <input type="text" id="caption" name="blockName[]" required="required" class="form-control input-sm " placeholder="Enter image caption" value="">
                                             <select class="clone-block-select form-control input-sm" name="menu[]" >
                                                 <option>Select target path</option>
@@ -147,11 +150,11 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="item_itemName"  class="control-label col-md-2 required">Slider type:</label>
+                                <label for="item_itemName"  class="control-label col-md-2 required">Showing Listing:</label>
                                 <div class="col-md-9">
                                     <div class="input-icon">
-                                        {{ form_widget(edit_form.sliderType) }}
-                                        {{ form_errors(edit_form.sliderType) }}
+                                        {{ form_widget(edit_form.showingListing) }}
+                                        {{ form_errors(edit_form.showingListing) }}
                                     </div>
                                 </div>
                             </div>
@@ -218,24 +221,4 @@
     </style>
 {% endblock %}
 
-{% block documentready %}
-
-    var count = 0;
-    $('#addmore').click(function(){
-
-        var $clone = $('.clone:eq(0)').clone();
-        $clone.find('[id]').each(function(){this.id+='someotherpart'});
-        $clone.attr('id', "added"+(++count));
-        $('.clone:eq(0)').after($clone);
-        $('#rmvbtn').removeAttr('disabled');
-
-    });
-
-    $('#rmvbtn').click(function(){
-        $('#added'+(count--)).remove();
-        if (count>0)  $('#rmvbtn').removeAttr('disabled');
-        else $('#rmvbtn').attr('disabled', 'disabled');
-    });
-
-{% endblock %}
 

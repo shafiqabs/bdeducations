@@ -389,5 +389,9 @@ li.mjs-nestedSortable-collapsed.mjs-nestedSortable-hovering div {
     text-transform: uppercase !important;
 }
 
+.thumbnail{
+    height: 100px!important;
+}
+
 
 

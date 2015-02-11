@@ -1,0 +1,81 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="www.frebsite.nl" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+
+    <title>jQuery.mmenu - Demo</title>
+
+    <link type="text/css" rel="stylesheet" href="css/demo.css" />
+    <link type="text/css" rel="stylesheet" href="../src/css/jquery.mmenu.all.css" />
+
+    <script type="text/javascript" src="../src/js/jquery-1.11.2.js"></script>
+    <script type="text/javascript" src="../src/js/jquery.mmenu.min.all.js"></script>
+    <style type="text/css">
+        .content
+        {
+            background-image: none;
+        }
+        a.mm-next
+        {
+            color: rgba(0, 0, 0, 0.3);
+        }
+        a.mm-next:after
+        {
+            content: none !important;
+            display: none !important;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(function() {
+            $("#menu")
+                    .mmenu({
+                        classes		: "mm-white",
+                        offCanvas	: {
+                            position	: "bottom",
+                            zposition	: "front",
+                            modal		: true
+                        },
+                        header		: {
+                            add			: true,
+                            update		: true,
+                            content		: ["title", "close"],
+                            title		: "Tooltips"
+                        }
+                    }).on(
+                    'click',
+                    'a[href^="#/"]',
+                    function()
+                    {
+                        alert( "Thank you for clicking, but that's a demo link." );
+                        return false;
+                    }
+            );
+        });
+    </script>
+</head>
+<body>
+<div id="page">
+    <div class="header">
+        Demo
+    </div>
+    <div class="content">
+        <p><strong>This is a demo.</strong><br />
+            Have you ever thought about how <a href="#menu">tooltips</a> should work on mobile devices?</p>
+    </div>
+</div>
+<nav id="menu">
+    <div>
+        <h3>Tooltips on mobile devices</h3>
+        <p>The <strong>tooltip</strong> or <strong>infotip</strong> or <strong>a hint</strong> is a common graphical user interface element. It is used in conjunction with a cursor, usually a pointer. The user hovers the pointer over an item, without clicking it, and a tooltip may appear - a small &quot;hover box&quot; with information about the item being hovered over.</p>
+        <p>Tooltips do not appear on mobile operating systems, because there is no cursor.</p>
+        <p><em>Wikipedia:</em><br />
+            <a target="_blank" href="http://en.wikipedia.org/wiki/Tooltip">http://en.wikipedia.org/wiki/Tooltip</a></p>
+    </div>
+</nav>
+</body>
+</html>

@@ -9,8 +9,7 @@
                     <div>
                         <div class="overlay"></div>
                         <div class="homepage-slider-caption">
-                            <h3>{{ image.caption }}</h3>
-                            <p>{{ image.description }}</p>
+                            <p>{{ image.caption }}</p>
                         </div>
                         <img src="/{{ image.webPath }}" class="responsive-image" alt="img">
                     </div>
@@ -26,43 +25,19 @@
         <div class="container">
                 <h3>Welcome: {{ entity.name }}</h3>
                 <div class="decoration"></div>
-                <p class="text_left">{{ entity.user.homePage.content }}</p>
+                <p class="text_left">{{ entity.user.homePage.content|raw }}</p>
                 <div class="decoration"></div>
         </div>
 
         <div class="one-responsive">
+
             {{ include('@Mobile/Module/homeFeature.html.twig')}}
         </div>
 
     </div>
-    <div id="element_to_pop_up">
-        <div class="module"></div>
-    <span class="bpopup-button b-close">
-        <span>X</span>
-    </span>
-    </div>
+
 
 {% endblock %}
-{% block documentready %}
 
-    $('.newsModal').bind('click', function(e) {
-
-        var self = $(this);
-        $('#element_to_pop_up').bPopup({
-        contentContainer:'.module',
-        loadUrl:'/mobile/scholistic/modulecontent/news/'+self.data('bpopup')
-        });
-
-    });
-    $('.eventModal').bind('click', function(e) {
-
-        var self = $(this);
-        $('#element_to_pop_up').bPopup({
-        contentContainer:'.module',
-        loadUrl:'/mobile/scholistic/modulecontent/event/'+self.data('bpopup')
-        });
-
-    });
-{% endblock %}
 
 

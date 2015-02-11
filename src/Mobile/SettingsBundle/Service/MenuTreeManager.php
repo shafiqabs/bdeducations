@@ -58,10 +58,10 @@ class MenuTreeManager
             if (!empty($val->getMenu()->getMenu())) {
                 $subIcon = (count($val->getChildren()) > 0 ) ? 1 : 2 ;
                 if($subIcon == 1){
-                    $value .= '<li><a href="/mobile/'.$subdomain.'/'.$val->getMenu()->getMenuSlug().'">' . $val->getMenu()->getMenu().'</a><span><i class="fa fa-caret-down"></i></span>';
+                    $value .= '<li><a href="/mobile/'.$subdomain.'/'.$val->getMenu()->getMenuSlug().'">' . $val->getMenu()->getMenu().'</a>';
                     $value .= $this->getMenuTree($val->getChildren(),$subdomain);
                 }else{
-                    $value .= '<li><a class="width-full" href="/mobile/'.$subdomain.'/'.$val->getMenu()->getMenuSlug().'">' . $val->getMenu()->getMenu().'</a>';
+                    $value .= '<li><a href="/mobile/'.$subdomain.'/'.$val->getMenu()->getMenuSlug().'">' . $val->getMenu()->getMenu().'</a>';
                 }
 
                 $value .= '</li>';
@@ -85,9 +85,9 @@ class MenuTreeManager
         if($menu->getModule()){
             $moduleTheme = $menu->getModule()->getModuleClass();
         }elseif($menu->getSyndicateModule()){
-            $moduleTheme = $menu->getModule()->getModuleClass();
+            $moduleTheme = $menu->getSyndicateModule()->getModuleClass();
         }elseif($menu->getSyndicate()){
-            $moduleTheme = 'syndicate';
+            $moduleTheme = 'SyndicateContent';
         }
 
         return $moduleTheme;

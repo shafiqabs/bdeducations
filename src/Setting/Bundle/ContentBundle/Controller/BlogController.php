@@ -42,7 +42,8 @@ class BlogController extends Controller
         $user = $this->get('security.context')->getToken()->getUser();
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity ->setUser($user);
+            $entity->setUser($user);
+            $entity->setSlug($this->get('setting.menuSettingRepo')->urlSlug($entity->getTitle()));
             $entity->upload();
             $em->persist($entity);
             $em->flush();
@@ -65,8 +66,8 @@ class BlogController extends Controller
      */
     private function createCreateForm(Blog $entity)
     {
-
-        $form = $this->createForm(new BlogType(), $entity, array(
+        $user = $this->get('security.context')->getToken()->getUser()->getId();
+        $form = $this->createForm(new BlogType($user), $entity, array(
             'action' => $this->generateUrl('blog_create', array('id' => $entity->getId())),
             'method' => 'POST',
             'attr' => array(
@@ -151,8 +152,8 @@ class BlogController extends Controller
     */
     private function createEditForm(Blog $entity)
     {
-
-        $form = $this->createForm(new BlogType(), $entity, array(
+        $user = $this->get('security.context')->getToken()->getUser()->getId();
+        $form = $this->createForm(new BlogType($user), $entity, array(
             'action' => $this->generateUrl('blog_update', array('id' => $entity->getId())),
             'method' => 'PUT',
             'attr' => array(
@@ -186,6 +187,7 @@ class BlogController extends Controller
 
         if ($editForm->isValid()) {
 
+            $entity->setSlug($this->get('setting.menuSettingRepo')->urlSlug($entity->getTitle()));
             $entity->upload();
             $em->flush();
 

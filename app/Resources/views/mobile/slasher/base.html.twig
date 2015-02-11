@@ -5,27 +5,31 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>{{ entity.name }}</title>
+    {#'assets/module/eventCalendar/css/paragridma.css'
+    'assets/module/eventCalendar/css/eventCalendar.css'
+    'assets/module/eventCalendar/css/eventCalendar_theme_responsive.css'
+    'assets/module/eventCalendar/css/jquery.e-calendar.css'
+#}
 
-{% stylesheets filter='cssrewrite'
+    {% stylesheets filter='cssrewrite'
     'assets/mobile/slasher/styles/style.css'
-    'assets/mobile/slasher/styles/framework.css'
+    'assets/module/framework/css/framework.css'
     'assets/module/carousel/css/owl.carousel.css'
     'assets/module/carousel/css/owl.theme.css'
     'assets/module/swipebox/css/swipebox.css'
     'assets/module/swipebox/css/colorbox.css'
-    'assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.css'
-    'assets/module/newsbox/css/site.css'
+    'assets/module/jquery-ui/jquery-ui-1.10.1.custom.min.css'
     'assets/module/pageflip/css/bookblock.css'
     'assets/module/pageflip/css/custom.css'
     'assets/module/pageflip/css/jquery.jscrollpane.custom.css'
-    'assets/module/bpopup/css/bpopup.css'
-    'assets/module/bpopup/css/bpopup.css'
+    'assets/module/accordion/css/accordion.css'
     'assets/mobile/css/custom.css'
-    'assets/mobile/css/icon.css'
+    'assets/module/framework/css/icon.css'
 
 
 %}
-<link rel="stylesheet" href="{{ asset_url }}"/>
+
+    <link rel="stylesheet" href="{{ asset_url }}"/>
 {% endstylesheets %}
 </head>
 <body>
@@ -49,26 +53,30 @@
     'assets/module/swipebox/js/colorbox.js'
     'assets/mobile/slasher/scripts/snap.js'
     'assets/mobile/slasher/scripts/contact.js'
-    'assets/mobile/slasher/scripts/framework.js'
-    'assets/mobile/slasher/scripts/framework.launcher.js'
-    'assets/plugins/multi-datepicker/js/jquery.ui.datepicker.js'
-    'assets/plugins/multi-datepicker/js/jquery.ui.core.js'
-    'assets/plugins/multi-datepicker/js/jquery-ui.multidatespicker.js'
-    'assets/mobile/js/jquery.cookie.js'
-    'assets/mobile/js/jquery.accordion.js'
-    'assets/module/newsbox/js/jquery.bootstrap.newsbox.min.js'
-    'assets/module/bpopup/js/jquery.bpopup.min.js'
-
+    'assets/module/framework/js/framework.js'
+    'assets/module/framework/js/framework.launcher.js'
+    'assets/module/framework/js/jquery.slicknav.js'
+    'assets/module/multi-datepicker/js/jquery.ui.datepicker.js'
+    'assets/module/multi-datepicker/js/jquery.ui.core.js'
+    'assets/module/multi-datepicker/js/jquery-ui.multidatespicker.js'
+    'assets/module/accordion/js/jquery.cookie.js'
+    'assets/module/accordion/js/jquery.accordion.js'
     'assets/module/pageflip/js/jquery.mousewheel.js'
     'assets/module/pageflip/js/jquery.jscrollpane.min.js'
     'assets/module/pageflip/js/jquerypp.custom.js'
     'assets/module/pageflip/js/jquery.bookblock.js'
     'assets/module/pageflip/js/page.js'
+    'assets/module/pageflip/js/mmenu.js'
+    'assets/module/eventCalendar/js/jquery.eventCalendar.js'
+    'assets/module/eventCalendar/js/jquery.e-calendar.js'
     'assets/mobile/slasher/scripts/custom.js'
 
 %}
 <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}
+<script type="text/javascript">
+    {% block javascriptblock %}{% endblock %}
+</script>
 <script type="text/javascript">
     jQuery(document).ready(function () {
         {% block documentready %}{% endblock %}
@@ -76,22 +84,16 @@
         $.fn.slideFadeToggle = function(speed, easing, callback) {
             return this.animate({opacity: 'toggle', height: 'toggle'}, speed, easing, callback);
         };
-
-        $('.accordion').accordion({
-            defaultOpen: 'section1',
-            cookieName: 'nav',
-            speed: 'slow',
-            animateOpen: function (elem, opts) { //replace the standard slideUp with custom function
-                elem.next().stop(true, true).slideFadeToggle(opts.speed);
-            },
-            animateClose: function (elem, opts) { //replace the standard slideDown with custom function
-                elem.next().stop(true, true).slideFadeToggle(opts.speed);
-            }
+        $('#nav').slicknav();
+        $('#nav1').slicknav({
+            label: '',
+            duration: 1000,
+            easingOpen: "easeOutBounce", //available with jQuery UI
+            prependTo:'#navigation'
         });
         Page.init();
-
-
     });
+
 </script>
 </body>
 </html>

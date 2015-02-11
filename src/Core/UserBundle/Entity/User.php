@@ -156,6 +156,11 @@ class User extends BaseUser
      */
     protected $menuGrouping;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Setting\Bundle\ContentBundle\Entity\ContactMessage", mappedBy="user")
+     */
+    protected $contactMessages;
+
 
 
     protected $role;

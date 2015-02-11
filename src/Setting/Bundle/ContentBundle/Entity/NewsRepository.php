@@ -12,4 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class NewsRepository extends EntityRepository
 {
+
+    public function findAllOrderedByDate()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT n FROM SettingBundleContent:News n ORDER BY n.startDate DESC'
+            )
+            ->getResult();
+    }
+
+
+
 }

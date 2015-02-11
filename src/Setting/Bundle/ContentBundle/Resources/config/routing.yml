@@ -61,3 +61,15 @@ SettingContentBundle_event:
 SettingContentBundle_noticeboard:
     resource: "@SettingContentBundle/Resources/config/routing/noticeboard.yml"
     prefix:   /noticeboard
+
+SettingContentBundle_contactmessage:
+    resource: "@SettingContentBundle/Resources/config/routing/contactmessage.yml"
+    prefix:   /contactmessage
+
+SettingContentBundle_admissioncomment:
+    resource: "@SettingContentBundle/Resources/config/routing/admissioncomment.yml"
+    prefix:   /admissioncomment
+
+SettingContentBundle_blogcomment:
+    resource: "@SettingContentBundle/Resources/config/routing/blogcomment.yml"
+    prefix:   /blogcomment

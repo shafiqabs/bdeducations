@@ -35,6 +35,21 @@ class Branch
      */
     private $name;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=255)
+     */
+    private $phone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fax", type="string", length=255)
+     */
+    private $fax;
+
     /**
      * @var string
      *
@@ -233,5 +248,37 @@ class Branch
     public function setUser($user)
     {
         $this->user = $user;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFax()
+    {
+        return $this->fax;
+    }
+
+    /**
+     * @param string $fax
+     */
+    public function setFax($fax)
+    {
+        $this->fax = $fax;
     }
 }

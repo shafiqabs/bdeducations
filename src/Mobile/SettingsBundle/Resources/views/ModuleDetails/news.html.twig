@@ -1,0 +1,69 @@
+<div id="container" class="page-container" style="height: 300px">
+<div class="menu-panel">
+    <h3>News of page-contents</h3>
+    <ul id="menu-toc" class="menu-toc">
+        {% for  row in entity.user.news %}
+        <li {% if( loop.index == 1  ) %}class="menu-toc-current" {% endif %}><a href="#item{{ loop.index }}">{{ row.name }}</a></li>
+        <li><a href="#item2">Why we die</a></li>
+        {% endfor %}
+
+    </ul>
+
+</div>
+<div class="bb-custom-wrapper">
+<div id="bb-bookblock" class="bb-bookblock" style="margin-top: 50px">
+{% for  row in entity.user.news %}
+    <div class="bb-item" id="item{{ loop.index }}">
+        <div class="page-content">
+            <div class="scroller">
+                <h3>{{ row.name }}</h3>
+                <h4 class="news-date">Date: [{{ row.startDate|date('d-m-Y') }}-To-{{ row.endDate|date('d-m-Y') }}]</h4>
+                <p>{{ row.content }}</p>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+<nav class="nav-paging">
+    <span id="bb-nav-prev">&larr;</span>
+    <span id="bb-nav-next">&rarr;</span>
+</nav>
+<span id="tblcontents" class="menu-button">News pages</span>
+</div>
+</div>
+{#
+<div class="container no-bottom">
+    <h1>News</h1>
+    <div class="decoration"></div>
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <ul id="demo3">
+                            {% for  row in entity.user.news %}
+                                <li><div class="one-responsive">
+                                    <div class="big-notification blue-notification">
+                                        <h4>{{ row.name }} <br/>Date: [{{ row.startDate|date('d-m-Y') }}-To-{{ row.endDate|date('d-m-Y') }}]</h4>
+                                        <p>{{ row.page-content }} --<a data-bpopup="{{ row.id }}" class="modulepage-content"  href="javascript:"> Read more...</a></p>
+                                    </div>
+                                </div></li>
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer"> </div>
+        </div>
+    </div>
+    <div class="decoration"></div>
+</div>
+<div id="element_to_pop_up">
+    <div class="module"></div>
+    <span class="bpopup-button b-close">
+        <span>X</span>
+    </span>
+</div>
+#}

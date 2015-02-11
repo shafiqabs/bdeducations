@@ -96,48 +96,37 @@ class MenuGroupingRepository extends EntityRepository
 
     }
 
-    public function getMenuSorting($user,$menuGroup){
 
-        $em = $this->_em;
-        $entities = $em->getRepository('SettingAppearanceBundle:MenuGrouping')->findBy(array('menuGroup' => $menuGroup, 'user' => $user, 'parent' => null),array('sorting'=>'ASC'));
-        $data ='';
-        $data .='<ol class="dd-list sortable" >';
-        foreach( $entities as $entity){
+    public function getMenuTree($arr)
+    {
 
-            $parent = $entity->getId();
-            $data .='<li style="display:list-item" class="dd-item dd3-item " id="menuItem_'.$entity->getId().'">
-                     <div class="menuDiv"><span><div data-id="{{ entity.id }}" class="itemTitle dd-handle dd3-handle"></div>
-                     <span class="dd3-content">'.$entity->getMenu()->getMenu().'</span></span></div>';
-            $entities = $em->getRepository('SettingAppearanceBundle:MenuGrouping')->findBy(array('parent' => $parent),array('sorting'=>'ASC'));
-            if($entities){
-                $data .='<ol>';
-                foreach($entities as $child){
-                    $subParent = $child->getId();
-                    $data .='<li style="display:list-item" class="dd-item dd3-item " id="menuItem_'.$child -> getId().'">
-                             <div class="menuDiv"><span><div data-id="{{ entity.id }}" class="itemTitle dd-handle dd3-handle"></div>
-                             <span class="dd3-content">'.$child -> getMenu() -> getMenu().'</span></span></div>';
-                    $entities = $em->getRepository('SettingAppearanceBundle:MenuGrouping')->findBy(array('parent' => $subParent ),array('sorting'=>'ASC'));
-                    if($entities){
-                        $data .='<ol>';
-                        foreach($entities as $subChild){
+        $value ='';
+        $value .='<ol class="dd-list sortable">';
+        foreach ($arr as $val) {
 
-                            $data .='<li style="display:list-item" class="dd-item dd3-item " id="menuItem_'.$subChild -> getId().'">
-                                         <div class="menuDiv"><span><div data-id="{{ entity.id }}" class="itemTitle dd-handle dd3-handle"></div>
-                                         <span class="dd3-content">'.$subChild -> getMenu() -> getMenu().'</span></span></div></li>';
-                        }
-                        $data .='</ol>';
-                    }
-
-                    $data .='</li>';
+            if (!empty($val->getMenu()->getMenu())) {
+                $subIcon = (count($val->getChildren()) > 0 ) ? 1 : 2 ;
+                if($subIcon == 1){
+                    $value .= '<li style="display:list-item" class="dd-item dd3-item " id="menuItem_'.$val->getId().'">
+                     <div class="menuDiv"><span><div data-id="'.$val->getId().'" class="itemTitle dd-handle dd3-handle"></div>
+                     <span class="dd3-content">' . $val->getMenu()->getMenu().'</span></span></div>';
+                    $value .= $this->getMenuTree($val->getChildren());
+                }else{
+                    $value .= '<li style="display:list-item" class="dd-item dd3-item " id="menuItem_'.$val->getId().'">
+                     <div class="menuDiv"><span><div data-id="'.$val->getId().'" class="itemTitle dd-handle dd3-handle"></div>
+                     <span class="dd3-content">' . $val->getMenu()->getMenu().'</span></span></div>';
                 }
-                $data .='</ol>';
+
+                $value .= '</li>';
+            } else {
+                $value .= '<li style="display:list-item" class="dd-item dd3-item " id="menuItem_'.$val->getId().'">
+                     <div class="menuDiv"><span><div data-id="'.$val->getId().'" class="itemTitle dd-handle dd3-handle"></div>
+                     <span class="dd3-content">'.$val->getMenu()->getMenu() . '</span></span></div>';
             }
-            $data .='</li>';
-
         }
-        $data .='</ol>';
+        $value .='</ol>';
 
-        return $data;
+        return $value;
 
     }
 

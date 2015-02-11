@@ -55,12 +55,6 @@ class Education
 
     protected $district;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Setting\Bundle\MediaBundle\Entity\PhotoGallery", inversedBy="education")
-     **/
-
-    protected $gallery;
-
 
     /**
      * @var string
@@ -110,6 +104,13 @@ class Education
      * @ORM\Column(name="website", type="string", length=255 , nullable = true)
      */
     private $website;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="officeHour", type="string", length=255 , nullable = true)
+     */
+    private $officeHour;
 
     /**
      * @var string
@@ -599,19 +600,19 @@ class Education
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getGallery()
+    public function getOfficeHour()
     {
-        return $this->gallery;
+        return $this->officeHour;
     }
 
     /**
-     * @param mixed $gallery
+     * @param string $officeHour
      */
-    public function setGallery($gallery)
+    public function setOfficeHour($officeHour)
     {
-        $this->gallery = $gallery;
+        $this->officeHour = $officeHour;
     }
 
 

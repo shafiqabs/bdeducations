@@ -62,7 +62,7 @@
                                         <td><strong>Institute Cheif Designation</strong></td> <td>{{ entity.instituteCheifDesignation }}</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Address</strong></td> <td>{{ entity.address }}{{ entity.thana.name }},{{ entity.thana.district.name }}</td>
+                                        <td><strong>Address</strong></td> <td>{{ entity.address }}{% if entity.thana %}{{ entity.thana.name }}{% endif %}{% if entity.thana %}, {{ entity.thana.district.name }}{% endif %}</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Hotline</strong></td> <td>{{ entity.hotline }}</td>

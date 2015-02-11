@@ -30,6 +30,12 @@ class SyndicateContent
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
+   /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=255, nullable=true)
+     */
+    private $slug;
 
     /**
      * @var string
@@ -252,6 +258,38 @@ class SyndicateContent
 
         // clean up the file property as you won't need it anymore
         $this->file = null;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
 
 }

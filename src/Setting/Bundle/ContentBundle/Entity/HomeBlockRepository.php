@@ -39,7 +39,7 @@ class HomeBlockRepository extends EntityRepository
                 $menuId = $data['menu'][$i];
                 $menu = $em->getRepository('SettingAppearanceBundle:Menu')->findOneBy(array('id'=>$menuId));
 
-                /*if($data['blockId'][$i] > 0 ){
+                if($data['blockId'][$i] > 0 ){
 
                     $id= $data['blockId'][$i];
                     $entity = $em->getRepository('SettingContentBundle:HomeBlock')->findOneBy(array('id'=>$id));
@@ -49,7 +49,7 @@ class HomeBlockRepository extends EntityRepository
                     $entity->setContent($data['content'][$i]);
                     $em->persist($entity);
 
-                }else{*/
+                }else{
 
                     $entity = new HomeBlock();
                     $entity->setHomePage($homePage);
@@ -57,13 +57,15 @@ class HomeBlockRepository extends EntityRepository
                     $entity->setMenu($menu);
                     $entity->setContent($data['content'][$i]);
                     $em->persist($entity);
-                //}
+                }
                 $i++;
             }
             $em->flush();
             if(!empty($data['removeId'])){
                 $this->removeBlock($data['removeId']);
             }
+
+           // exit;
 
         }
 

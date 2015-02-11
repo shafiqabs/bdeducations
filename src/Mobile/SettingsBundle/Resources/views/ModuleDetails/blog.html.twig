@@ -1,0 +1,175 @@
+{% extends ':mobile/slasher:base.html.twig' %}
+{% block body %}
+    {{ include('mobile/slasher/header.html.twig')}}
+    <div class="page-header-clear"></div>
+    <div class="content">
+        <div class="container">
+            <h1 class="left-text">{{ details.title|default() }}</h1>
+            <strong>{{ details.name }}</strong>, <em>{{ details.created|date('F j, Y') }}</em>
+            <div class="decoration"></div>
+            <p class="justify-text">{{ details.content|raw }}</p>
+            <div class="decoration"></div>
+            {% if(details.webPath()) %}
+                <div class="wide-item">
+                    <div class="wide-item-titles">
+                        <h4>Click here show Gallery</h4>
+                    </div>
+                    <div class="wide-image">
+                        <div class="overlay"></div>
+                        <a class="tile-wide" id="gallery" href="javascript:"><img class="responsive-image" src="/{{ details.webPath() }}" alt="img"></a>
+                    </div>
+
+                </div>
+            {% endif %}
+            <div class="decoration"></div>
+
+        </div>
+        <div class="container">
+            <div class="tabs">
+                <a class="tab-but tab-but-1 tab-active" href="javascript:">Comment Form</a>
+                <a class="tab-but tab-but-2" href="javascript:">User Comments</a>
+            </div>
+            <div class="decoration"></div>
+            <div class="tab-content tab-content-1" style="display: block;">
+                <div class="one-responsive">
+
+                    <div class="container no-bottom">
+                        <h4>Blog Comments</h4>
+                        <div class="contact-form no-bottom">
+                            <div class="formSuccessMessageWrap" id="formSuccessMessageWrap">
+                                <div class="big-notification green-notification">
+                                    <h3 class="uppercase">Blog Comments</h3>
+                                    <a href="#" class="close-big-notification">x</a>
+                                    <p>Your message has been successfuly sent. Please allow up to 48 hours for a reply! Thank you!</p>
+                                </div>
+                            </div>
+
+                            <form action="{{ path('blog_message',{'subdomain': entity.user.globalOption.subDomain,'module': moduleName|lower,'slug':details.slug }) }}" method="post" class="contactForm" id="contactForm">
+                                <fieldset>
+                                    <div class="formValidationError" id="contactNameFieldError">
+                                        <div class="static-notification-red tap-dismiss-notification">
+                                            <p class="center-text uppercase">Name is required!</p>
+                                        </div>
+                                    </div>
+                                    <div class="formValidationError" id="contactEmailFieldError">
+                                        <div class="static-notification-red tap-dismiss-notification">
+                                            <p class="center-text uppercase">Mail address required!</p>
+                                        </div>
+                                    </div>
+                                    <div class="formValidationError" id="contactEmailFieldError2">
+                                        <div class="static-notification-red tap-dismiss-notification">
+                                            <p class="center-text uppercase">Mail address must be valid!</p>
+                                        </div>
+                                    </div>
+                                    <div class="formValidationError" id="contactMessageTextareaError">
+                                        <div class="static-notification-red tap-dismiss-notification">
+                                            <p class="center-text uppercase">Message field is empty!</p>
+                                        </div>
+                                    </div>
+                                    <div class="formFieldWrap">
+                                        <label class="field-title contactNameField" for="contactNameField">Name:<span>(required)</span></label>
+                                        <input type="text" name="name" value="" class="contactField requiredField" id="contactNameField"/>
+                                    </div>
+                                    <div class="formFieldWrap">
+                                        <label class="field-title contactEmailField" for="contactEmailField">Email: <span>(required)</span></label>
+                                        <input type="text" name="email" value="" class="contactField requiredField requiredEmailField" id="contactEmailField"/>
+                                    </div>
+                                    <div class="formTextareaWrap">
+                                        <label class="field-title contactMessageTextarea" for="contactMessageTextarea">Comments: <span>(required)</span></label>
+                                        <textarea name="content" class="contactTextarea requiredField" id="contactMessageTextarea"></textarea>
+                                    </div>
+                                    <div class="formSubmitButtonErrorsWrap">
+                                        <input type="hidden" name="id" value="{{ details.id }}">
+                                        <input type="submit" class="buttonWrap button button-dark contactSubmitButton" id="contactSubmitButton" value="SUBMIT" data-formId="contactForm"/>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if(comments) %}
+            <div class="tab-content tab-content-2" style="display: none;">
+                <div class="one-responsive">
+                    <div class="container no-bottom">
+                        <h4>User Comments</h4>
+                        <ul>
+                            {% for comment in comments %}
+                            <li>
+                                <strong>{{ comment.name }}</strong>, <em>{{ details.created|date('F j, Y') }}</em>
+                                <div class="decoration"></div>
+                                <p>{{ comment.content|raw }}</p>
+                                <p><br/></p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+{% block documentready %}
+    {% if(details.photoGallery) %}
+        $( '#gallery' ).click( function( e ) {
+            e.preventDefault();
+            $.swipebox( [
+                {% for image in details.photoGallery.galleryImages %}
+                    { href : '/{{ image.webPath }}', title : '{{ image.caption }}' },
+                {% endfor %}
+            ]);
+        });
+    {% endif %}
+{% endblock %}
+{% block javascriptblock %}
+    resizereinit=true;
+    menu[1] = {
+    id:'omniLeftMenu', //use unique quoted id (quoted) REQUIRED!!
+    fontsize:'100%', // express as percentage with the % sign
+    linkheight:15 ,  // linked horizontal cells height
+    hdingwidth:250 ,  // heading - non linked horizontal cells width
+    // Finished configuration. Use default values for all other settings for this particular menu (menu[1]) ///
+    menuleft:'45%',    // initial left offset - only for top menu, as pixels (can be a quoted percentage - ex: '50%')
+    keepinview:80,   // Use false (for not static) - OR - true or numeric top offset when page scrolls
+    menuspeed:20,    // Speed of menu sliding smaller is faster (interval of milliseconds)
+    menupause:500,   // How long menu stays out when mouse leaves it (in milliseconds)
+    d_colspan:3,     // Available columns in menu body as integer
+    allowtransparent:false, // true to allow page to show through menu if other bg's are transparent or border has gaps
+    barwidth:20,     // bar (the vertical cell) width
+    wrapbar:true,    // extend and wrap bar below menu for a more solid look (default false) - will revert to false for top menu
+    hdingwidth:250,  // heading - non linked horizontal cells width
+    hdingheight:25,  // heading - non linked horizontal cells height
+    hdingindent:1,   // heading - non linked horizontal cells text-indent represents ex units (@8 pixels decimals allowed)
+    linkheight:15,   // linked horizontal cells height
+    linktopad:2,     // linked horizontal cells top padding
+    borderwidth:1,   // inner border-width used for this menu
+    /////////////////////////// quote these properties: /////////////////////
+    bordercolor:'#444444', // inner border color
+    borderstyle:'solid',    // inner border style (solid, dashed, inset, etc.)
+    outbrdwidth:'0ex 0ex 0ex 0ex', // outer border-width used for this menu (top right bottom left)
+    outbrdcolor:'#444444',  // outer border color
+    outbrdstyle:'solid',     // outer border style (solid, dashed, inset, etc.)
+    barbgcolor:'#444444',   // bar (the vertical cell) background color
+    barfontweight:'normol',    // bar (the vertical cell) font weight
+    baralign:'center',       // bar (the vertical cell) right left or center text alignment
+    hdingcolor:'white',      // heading - non linked horizontal cells text color
+    hdingbgcolor:'#4d6814',  // heading - non linked horizontal cells background color
+    hdingfontweight:'normol',  // heading - non linked horizontal cells font weight
+    hdingvalign:'middle',    // heading - non linked horizontal cells vertical align (top, middle or center)
+    hdingtxtalign:'left',    // heading - non linked horizontal cells right left or center text alignment
+    linktxtalign:'left',     // linked horizontal cells right left or center text alignment
+    linktarget:'',           // default link target, leave blank for same window (other choices: _new, _top, or a window or frame name)
+    kviewtype:'fixed',       // Type of keepinview - 'fixed' utilizes fixed positioning where available, 'absolute' fluidly follows page scroll
+
+    menuItems:[ // REQUIRED!!
+    //[name, link, target, colspan, endrow?] - leave 'link' and 'target' blank to make a header
+    ["Blog lists"], //create header
+    {% for  row in entity.user.blogs %}
+        ["{{ row.title }}", "{{ path('mobile_module',{'subdomain': entity.user.globalOption.subDomain,'module': moduleName|lower,'slug':row.slug }) }}", ""],
+    {% endfor %}
+    ]}; // REQUIRED!! do not edit or remove
+    make_menus();
+{% endblock %}
+
+

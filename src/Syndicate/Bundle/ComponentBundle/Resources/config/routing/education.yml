@@ -19,6 +19,10 @@ education_edit:
     path:     /{id}/edit
     defaults: { _controller: "SyndicateComponentBundle:Education:edit" }
 
+education_modify:
+    path:     /modify
+    defaults: { _controller: "SyndicateComponentBundle:Education:modify" }
+
 education_update:
     path:     /{id}/update
     defaults: { _controller: "SyndicateComponentBundle:Education:update" }

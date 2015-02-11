@@ -1,10 +1,14 @@
+#content{
+    margin-bottom: 40px!important;
+}
+
 #footer-content{
     position: fixed;
     bottom: 0;
     background: #a3a3a3;
     width: 100%;
     margin: 0;
-    height: 50px;
+    height: 35px;
     z-index: 999999;
     overflow: visible;
     border-top:1px solid #666;
@@ -15,7 +19,7 @@
     width: 225px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 7px;
+
 }
 
 #footer-content .icon-footer-center a{

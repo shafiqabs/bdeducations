@@ -68,9 +68,7 @@ class PageController extends Controller
     public function createAction(Request $request)
     {
 
-
         $user = $this->get('security.context')->getToken()->getUser();
-
         $entity = new Page();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);

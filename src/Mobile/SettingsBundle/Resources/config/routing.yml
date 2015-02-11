@@ -6,6 +6,26 @@ mobile_home:
     path:     /mobile/{subdomain}/home
     defaults: { _controller: MobileBundle:Default:home }
 
+contact_message:
+    path:      /mobile/{subdomain}/{slug}
+    defaults: { _controller: MobileBundle:Page:contactSubmit }
+    requirements: { _method: post }
+
+blog_message:
+    path:      /mobile/{subdomain}/{module}/{slug}
+    defaults: { _controller: MobileBundle:Page:blogSubmit }
+    requirements: { _method: post }
+
+admission_message:
+    path:      /mobile/{subdomain}/{module}/{slug}
+    defaults: { _controller: MobileBundle:Page:admissionSubmit }
+    requirements: { _method: post }
+
+mobile_event:
+    path:      /mobile/{subdomain}/events
+    defaults: { _controller: MobileBundle:Module:event }
+
+
 mobile_contact:
     path:      /mobile/{subdomain}/contact
     defaults: { _controller: MobileBundle:Default:contact }
@@ -18,7 +38,9 @@ mobile_content:
     path:      /mobile/{subdomain}/{slug}
     defaults: { _controller: MobileBundle:Page:index }
 
-mobile_module_content:
-    path:      /mobile/{subdomain}/modulecontent/{module}/{id}
-    defaults: { _controller: MobileBundle:Default:moduleContent }
+
+mobile_module:
+    path:      /mobile/{subdomain}/{module}/{slug}
+    defaults: { _controller: MobileBundle:Module:index }
+
 

@@ -1,22 +1,37 @@
-
+{% if(entity.user.homePage.homeBlocks) %}
+    <div class="big-notification dark-notification">
+        <div class="one-full-responsive one-full-responsive-white" >
+            {% for block in entity.user.homePage.homeBlocks %}
+                <div class="accordion" id="section{{ loop.index }}">{{ block.name }}<span></span></div>
+                <div class="container">
+                    <div class="content1">
+                        <div class="decoration"></div>
+                        {{ block.content|raw }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
 {% if(entity.user.homePage.syndicateModules) %}
     {% for row in entity.user.homePage.syndicateModules  %}
         {% if(row.menuSlug == 'admission') %}
-            <div class="big-notification green-notification">
+            <div class="big-notification dark-notification">
                 <h4 class="uppercase">Admission</h4>
                 <div class="one-full-responsive one-full-responsive-white" >
-                    {% for admission in entity.user.admissions %}
+
+                    {% for admission in entity.user.admissions|slice(0, entity.user.homePage.showingListing)  %}
                         <div class="one-full-responsive one-full-responsive-margin" >
                             <div>
                                 <h5>{{ admission.name }}</h5 >
-                                <a data-bpopup="{{ admission.id }}" class="moduleContent noticeModal"  href="javascript:"> Read more...</a>
+                                <a href="{{ path('mobile_module',{'subdomain': entity.user.globalOption.subDomain,'module': row.moduleClass|lower,'slug':admission.slug }) }}"> Read more...</a>
 
                             </div>
                         </div>
                         <div class="decoration"></div>
                     {% endfor %}
                 </div>
-                <a class="text-highlight right-arrow link-green "  href="/mobile/{{ entity.user.globalOption.subDomain }}/admission">More news</a>
+                <a class="text-highlight right-arrow link-dark"  href="{{ path('mobile_content',{'subdomain': entity.user.globalOption.subDomain,'slug': row.menuSlug }) }}">More admission information</a>
             </div>
         {% endif %}
     {% endfor %}
@@ -24,79 +39,80 @@
 
 {% if(entity.user.homePage.modules) %}
     {% for row in entity.user.homePage.modules  %}
-        {% if(row.menuSlug == 'noticeboard') %}
-            <div class="big-notification red-notification">
-                <h4 class="uppercase">Notice Board</h4>
-                <div class="one-full-responsive one-full-responsive-white" >
-                    {% for noticeboard in entity.user.noticeboards %}
-                        <div class="one-full-responsive one-full-responsive-margin" >
-                            <div>
-                                <h5>{{ noticeboard.name }}</h5 >
-                                <a data-bpopup="{{ noticeboard.id }}" class="moduleContent noticeModal"  href="javascript:"> Read more...</a>
-
-                            </div>
-                        </div>
-                        <div class="decoration"></div>
-                    {% endfor %}
-                </div>
-                <a class="text-highlight right-arrow link-red "  href="/mobile/{{ entity.user.globalOption.subDomain }}/noticeboard">More news</a>
-            </div>
-        {% endif %}
-        {% if(row.menuSlug == 'news') %}
-            <div class="big-notification blue-notification">
-                <h4 class="uppercase">Latest News</h4>
-                <div class="one-full-responsive one-full-responsive-white" >
-                    {% for news in entity.user.news %}
-                        <div class="one-full-responsive one-full-responsive-margin" style="margin: 10px">
-                            <div class="float-left" >
-                                <img class="float-left" width="70" src="/{{ news.webPath }}">
-                            </div>
-                            <div>
-                                <h5>{{ news.name }}</h5 >
-                                <h6 style="color: #0b84fe!important">News Date: {{ news.startDate|date('d-m-Y') }}-To-{{ news.endDate|date('d-m-Y') }}</h6>
-                                <a data-bpopup="{{ news.id }}" class="moduleContent newsModal"  href="javascript:"> Read more...</a>
-                            </div>
-                        </div>
-                        <div class="decoration"></div>
-                    {% endfor %}
-                </div>
-                <a class="text-highlight right-arrow link-blue "  href="/mobile/{{ entity.user.globalOption.subDomain }}/news">More news</a>
-
-            </div>
-        {% endif %}
         {% if(row.menuSlug == 'event') %}
             <div class="big-notification green-notification">
                 <h4 class="uppercase">Recent Events</h4>
                 <div class="one-full-responsive" style="background: #ffffff">
-                    {% for event in entity.user.events %}
+                    {% for event in entity.user.events|slice(0, entity.user.homePage.showingListing) %}
                         <div class="one-full-responsive one-full-responsive-margin" >
                             <div class="float-left" >
                                 <img class="float-left" width="70" src="/{{ event.webPath }}">
                             </div>
                             <div>
                                 <h5>{{ event.name }}</h5 >
-                                <h6 style="color: #0b84fe!important">Event Date: {{ event.startDate|date('d-m-Y') }}-To-{{ event.endDate|date('d-m-Y') }}</h6>
-                                <a data-bpopup="{{ event.id }}" class="moduleContent eventModal"  href="javascript:"> Read more...</a>
+                                <h6 class="start-end-date">Date: {{ event.startDate|date('d-m-Y') }}-To-{{ event.endDate|date('d-m-Y') }}</h6>
+                                <a href="{{ path('mobile_module',{'subdomain': entity.user.globalOption.subDomain,'module': row.moduleClass|lower,'slug':event.slug }) }}"> Read more...</a>
+
                             </div>
                         </div>
                         <div class="decoration"></div>
                     {% endfor %}
                 </div>
-                <a class="text-highlight right-arrow link-green"  href="/mobile/{{ entity.user.globalOption.subDomain }}/event">More news</a>
+                <a class="text-highlight right-arrow link-green "  href="{{ path('mobile_content',{'subdomain': entity.user.globalOption.subDomain,'slug': row.menuSlug }) }}">More Events</a>
             </div>
         {% endif %}
-        {% if(row.menuSlug == 'testimonial') %}
+        {% if(row.menuSlug == 'news') %}
+            <div class="big-notification blue-notification">
+                <h4 class="uppercase">Latest News {{ entity.user.homePage.showingListing }}</h4>
+                <div class="one-full-responsive one-full-responsive-white" >
+
+                    {% for news in entity.user.news|slice(0, entity.user.homePage.showingListing) %}
+                        <div class="one-full-responsive one-full-responsive-margin" style="margin: 10px">
+                            <div class="float-left" >
+                                <img class="float-left" width="70" src="/{{ news.webPath }}">
+                            </div>
+                            <div>
+                                <h5>{{ news.name }}</h5 >
+                                <h6 class="start-end-date">Date: {{ news.startDate|date('d-m-Y') }}-To-{{ news.endDate|date('d-m-Y') }}</h6>
+                                <a href="{{ path('mobile_module',{'subdomain': entity.user.globalOption.subDomain,'module': row.moduleClass|lower,'slug':news.slug }) }}"> Read more...</a>
+                            </div>
+                        </div>
+                        <div class="decoration"></div>
+                    {% endfor %}
+                </div>
+                <a class="text-highlight right-arrow link-blue "  href="{{ path('mobile_content',{'subdomain': entity.user.globalOption.subDomain,'slug': row.menuSlug }) }}">More news</a>
+            </div>
+        {% endif %}
+        {% if(row.menuSlug == 'noticeboard') %}
+            <div class="big-notification red-notification">
+                <h4 class="uppercase">Notice Board</h4>
+                <div class="one-full-responsive one-full-responsive-white" >
+                    {% for noticeboard in entity.user.noticeboards|slice(0, entity.user.homePage.showingListing) %}
+                        <div class="one-full-responsive one-full-responsive-margin" >
+                            <div>
+                                <h5>{{ noticeboard.name }}</h5 >
+                                <a href="{{ path('mobile_module',{'subdomain': entity.user.globalOption.subDomain,'module': row.moduleClass|lower,'slug':noticeboard.slug }) }}"> Read more...</a>
+
+                            </div>
+                        </div>
+                        <div class="decoration"></div>
+                    {% endfor %}
+                </div>
+                <a class="text-highlight right-arrow link-red "  href="{{ path('mobile_content',{'subdomain': entity.user.globalOption.subDomain,'slug': row.menuSlug }) }}">See Notice Board</a>
+            </div>
+        {% endif %}
+        {% if(row.menuSlug == 'testimonial' and entity.user.testimonials|length > 0 ) %}
             <a href="#" class="next-quote"></a>
             <a href="#" class="prev-quote"></a>
             <div class="quote-slider" data-snap-ignore="true">
 
-                {% for testimonial in entity.user.testimonials %}
+                {% for testimonial in entity.user.testimonials|slice(0, entity.user.homePage.showingListing) %}
                     <div>
                         <div class="quote-item">
                             <img src="/{{ testimonial.webPath }}" alt="img">
                             <h4>{{  testimonial.name }}{% if(testimonial.designation) %},{{ testimonial.designation }}{% endif %}</h4>
                             <em>{% if(testimonial.title ) %}<em>{{ testimonial.title }}</em>{% endif %}</em>
-                            <strong>{{ testimonial.content }}</strong>
+                            <strong>{{ testimonial.content|raw }}</strong>
 
                         </div>
                     </div>
@@ -108,8 +124,8 @@
     {% endfor %}
 {% endif %}
 <div class="decoration"></div>
-{% if(entity.user.homePage.syndicates) %}
-    <div class="big-notification green-notification">
+{% if(entity.user.homePage.syndicates|length > 0 ) %}
+    <div class="big-notification yellow-notification">
         <h4 class="uppercase">Classified</h4>
         <div class="one-full-responsive one-full-responsive-white" >
             {% for row in entity.user.syndicateContents %}
@@ -117,7 +133,9 @@
                 <div class="container">
                     <div class="content1">
                         <div class="decoration"></div>
-                        {{ row.content |raw }}
+                        {{ row.content |raw|truncate(200, true) }}
+                       <a href="{{ path('mobile_module',{'subdomain': entity.user.globalOption.subDomain,'module': 'syndicate','slug':row.slug }) }}"> Read more...</a>
+
                     </div>
                 </div>
             {% endfor %}

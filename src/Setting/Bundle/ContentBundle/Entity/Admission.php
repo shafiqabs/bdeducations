@@ -89,6 +89,20 @@ class Admission
     private $status=true;
 
     /**
+     * @ORM\Column(type="string", name="slug", nullable=true)
+     */
+    protected $slug;
+    /**
+     * @ORM\Column(type="string", name="phoneNo", nullable=true)
+     */
+    protected $phoneNo;
+
+    /**
+     * @ORM\Column(type="string", name="officeHour", nullable=true)
+     */
+    protected $officeHour;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $path;
@@ -103,6 +117,13 @@ class Admission
      **/
 
     protected $user;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Setting\Bundle\ContentBundle\Entity\AdmissionComment", mappedBy="admission")
+     */
+    protected $comments;
+
+
 
 
     /**
@@ -344,5 +365,70 @@ class Admission
 
         // clean up the file property as you won't need it anymore
         $this->file = null;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param mixed $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhoneNo()
+    {
+        return $this->phoneNo;
+    }
+
+    /**
+     * @param mixed $phoneNo
+     */
+    public function setPhoneNo($phoneNo)
+    {
+        $this->phoneNo = $phoneNo;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getOfficeHour()
+    {
+        return $this->officeHour;
+    }
+
+    /**
+     * @param mixed $officeHour
+     */
+    public function setOfficeHour($officeHour)
+    {
+        $this->officeHour = $officeHour;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param mixed $comments
+     */
+    public function setComments($comments)
+    {
+        $this->comments = $comments;
     }
 }

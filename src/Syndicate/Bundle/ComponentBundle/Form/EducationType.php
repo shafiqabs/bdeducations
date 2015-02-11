@@ -62,6 +62,7 @@ class EducationType extends AbstractType
 
                 )
             ))
+            ->add('officeHour','text', array('attr'=>array('class'=>'form-control input-sm','placeholder'=>'Enter phone')))
             ->add('phone','text', array('attr'=>array('class'=>'form-control input-sm','placeholder'=>'Enter phone')))
             ->add('fax','text', array('attr'=>array('class'=>'form-control input-sm','placeholder'=>'Enter fax')))
             ->add('website','text', array('attr'=>array('class'=>'form-control input-sm','placeholder'=>'Enter website')))
@@ -84,19 +85,6 @@ class EducationType extends AbstractType
                 'attr'=>array('class'=>'district form-control input-sm select2'),
                 'class' => 'SettingLocationBundle:District',
                 'property' => 'name'
-            ))
-            ->add('gallery', 'entity', array(
-                'required'    => false,
-                'class' => 'Setting\Bundle\MediaBundle\Entity\PhotoGallery',
-                'empty_value' => '---Select Photo Gallery---',
-                'property' => 'name',
-                'attr'=>array('class'=>'form-control input-sm'),
-                'query_builder' => function(EntityRepository $er){
-                        return $er->createQueryBuilder('o')
-                            ->andWhere("o.status = 1")
-                            ->andWhere("o.user = $this->user ")
-                            ->orderBy('o.name','ASC');
-                    },
             ))
 
             ->add('overview','textarea', array('attr'=>array('class'=>'form-control wysihtml5','row'=>'15')))

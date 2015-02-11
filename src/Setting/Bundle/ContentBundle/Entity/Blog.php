@@ -34,14 +34,28 @@ class Blog
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="content", type="text", nullable=true)
      */
     private $content;
 
     /**
-     * @var datetime
+     * @var \DateTime
      *
-     * @ORM\Column(name="created", type="boolean")
+     * @ORM\Column(name="created", type="datetime", nullable=true)
      */
     private $created;
 
@@ -68,6 +82,17 @@ class Blog
 
     protected $user;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Setting\Bundle\MediaBundle\Entity\PhotoGallery", inversedBy="blogs")
+     */
+    protected $photoGallery;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Setting\Bundle\ContentBundle\Entity\BlogComment", mappedBy="blog")
+     */
+    protected $comments;
+
+
 
     public function __construct() {
 
@@ -75,8 +100,6 @@ class Blog
             $this->setCreated(new \DateTime());
             $this->setStatus(true);
         }
-
-
     }
 
 
@@ -161,7 +184,7 @@ class Blog
     }
 
     /**
-     * @return \Setting\Bundle\ContentBundle\Entity\datetime
+     * @return datetime
      */
     public function getCreated()
     {
@@ -169,7 +192,7 @@ class Blog
     }
 
     /**
-     * @param \Setting\Bundle\ContentBundle\Entity\datetime $created
+     * @param $created
      */
     public function setCreated($created)
     {
@@ -244,6 +267,86 @@ class Blog
 
         // clean up the file property as you won't need it anymore
         $this->file = null;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhotoGallery()
+    {
+        return $this->photoGallery;
+    }
+
+    /**
+     * @param mixed $photoGallery
+     */
+    public function setPhotoGallery($photoGallery)
+    {
+        $this->photoGallery = $photoGallery;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param mixed $comments
+     */
+    public function setComments($comments)
+    {
+        $this->comments = $comments;
     }
 
 }

@@ -50,16 +50,17 @@ class PhotoGallery
     protected $eventGalleries;
 
     /**
+     * @ORM\OneToMany(targetEntity="Setting\Bundle\ContentBundle\Entity\Blog", mappedBy="photoGallery")
+     */
+
+    protected $blogs;
+
+    /**
      * @ORM\OneToMany(targetEntity="Setting\Bundle\ContentBundle\Entity\HomePage", mappedBy="photoGallery")
      */
 
     protected $homePage;
 
-    /**
-     * @ORM\OneToOne(targetEntity="Syndicate\Bundle\ComponentBundle\Entity\Education", mappedBy="gallery")
-     */
-
-    protected $education;
 
     /**
      * @ORM\OneToMany(targetEntity="Setting\Bundle\ContentBundle\Entity\SyndicateContent", mappedBy="photoGallery")
@@ -265,21 +266,6 @@ class PhotoGallery
         $this->pageGalleries = $pageGalleries;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getEducation()
-    {
-        return $this->education;
-    }
-
-    /**
-     * @param mixed $education
-     */
-    public function setEducation($education)
-    {
-        $this->education = $education;
-    }
 
     /**
      * @return mixed
@@ -381,6 +367,14 @@ class PhotoGallery
     public function getEventGalleries()
     {
         return $this->eventGalleries;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBlogs()
+    {
+        return $this->blogs;
     }
 
 

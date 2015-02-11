@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="www.frebsite.nl" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+
+    <title>{{ entity.name }}</title>
+
+    <link type="text/css" rel="stylesheet" href="css/demo.css" />
+    <link type="text/css" rel="stylesheet" href="../src/css/jquery.mmenu.all.css" />
+    {% stylesheets filter='cssrewrite'
+    'assets/mobile/education/css/education.css'
+    'assets/mobile/education/css/jquery.mmenu.all.css'
+    'assets/module/carousel/css/owl.carousel.css'
+    'assets/module/carousel/css/owl.theme.css'
+    'assets/module/swipebox/css/swipebox.css'
+    'assets/module/accordion/css/accordion.css'
+    'assets/module/framework/css/framework.css'
+    'assets/module/framework/css/icon.css'
+
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+
+
+</head>
+<body>
+<div id="page">
+    <div class="header menu-header">
+        <a href="#menu"></a>
+        <img src="/{{ entity.webPath }}" onclick="window.location='{{ path('mobile_home',{'subdomain': entity.user.globalOption.subDomain }) }}'" class="page-logo" alt="/{{ entity.name }}">
+
+    </div>
+
+
+    <div id="preloader">
+        <div id="status">
+            <p class="center-text">
+                Loading the content...
+                <em>Loading depends on your connection speed!</em>
+            </p>
+        </div>
+    </div>
+</div>
+{% block body %}{% endblock %}
+<nav id="menu" >
+    {{ menu|raw }}
+</nav>
+
+
+{{ include('mobile/footer.html.twig')}}
+{% javascripts
+'assets/module/pageflip/js/modernizr.custom.79639.js'
+'assets/mobile/education/js/jquery-1.11.2.js'
+'assets/mobile/education/js/jquery.mmenu.min.all.js'
+'assets/module/accordion/js/jquery.cookie.js'
+'assets/module/accordion/js/jquery.accordion.js'
+'assets/module/carousel/js/owl.carousel.min.js'
+'assets/module/swipebox/js/jquery.swipebox.js'
+'assets/module/swipebox/js/colorbox.js'
+'assets/module/framework/js/framework.js'
+'assets/module/framework/js/framework.launcher.js'
+%}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+<script type="text/javascript">
+    {% block javascriptblock %}{% endblock %}
+</script>
+
+<script type="text/javascript">
+    $(window).load(function() { // makes sure the whole site is loaded
+        $("#status").fadeOut(); // will first fade out the loading animation
+        $("#preloader").delay(350).fadeOut("slow"); // will fade out the white DIV that covers the website.
+    })
+
+    $(function() {
+        $('nav#menu').mmenu();
+    });
+
+    jQuery(document).ready(function () {
+        {% block documentready %}{% endblock %}
+
+    });
+
+</script>
+</body>
+</html>
+
+

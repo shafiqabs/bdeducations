@@ -23,30 +23,21 @@ class BranchType extends AbstractType
 
                 )
             ))
-            ->add('mobile','text', array('attr'=>array('class'=>'form-control input-sm','placeholder'=>'Enter mobile no'),
-                'constraints' =>array(
-                    new NotBlank(array('message'=>'Please input required')),
+            ->add('mobile','text', array('attr'=>array('class'=>'form-control input-sm','placeholder'=>'Enter mobile no')
 
-                )
             ))
-            ->add('email','text', array('attr'=>array('class'=>'form-control input-sm','placeholder'=>'Enter email address'),
-                'constraints' =>array(
-                    new NotBlank(array('message'=>'Please input required')),
+            ->add('email','text', array('attr'=>array('class'=>'form-control input-sm','placeholder'=>'Enter email address')
 
-                )
             ))
-            ->add('contactPerson','text', array('attr'=>array('class'=>'form-control input-sm','placeholder'=>'Enter contact person'),
-                'constraints' =>array(
-                    new NotBlank(array('message'=>'Please input required')),
+            ->add('phone','text', array('attr'=>array('class'=>'form-control input-sm','placeholder'=>'Enter email phone')
 
-                )
             ))
-            ->add('address','text', array('attr'=>array('class'=>'form-control input-sm','placeholder'=>'Enter address'),
-                'constraints' =>array(
-                    new NotBlank(array('message'=>'Please input required')),
+            ->add('fax','text', array('attr'=>array('class'=>'form-control input-sm','placeholder'=>'Enter email fax')
 
-                )
             ))
+            ->add('contactPerson','text', array('attr'=>array('class'=>'form-control input-sm','placeholder'=>'Enter contact person')
+            ))
+            ->add('address','text', array('attr'=>array('class'=>'form-control input-sm','placeholder'=>'Enter address')))
             ->add('status')
         ;
     }

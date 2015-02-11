@@ -44,6 +44,7 @@ class TestimonialController extends Controller
             $em->persist($entity);
             $user = $this->get('security.context')->getToken()->getUser();
             $entity->setUser($user);
+            $entity->setSlug($this->get('setting.menuSettingRepo')->urlSlug($entity->getTitle()));
             $entity->upload();
             $em->flush();
 
@@ -186,6 +187,7 @@ class TestimonialController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $entity->setSlug($this->get('setting.menuSettingRepo')->urlSlug($entity->getTitle()));
             $entity->upload();
             $em->flush();
 

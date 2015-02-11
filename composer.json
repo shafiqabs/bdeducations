@@ -25,7 +25,8 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "friendsofsymfony/jsrouting-bundle": "@stable",
         "jms/security-extra-bundle": "dev-master",
-        "slik/dompdf-bundle" : "dev-master"
+        "slik/dompdf-bundle" : "dev-master",
+        "imanee/imanee": "dev-master@dev"
     },
     "scripts": {
         "post-install-cmd": [

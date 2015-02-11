@@ -191,6 +191,32 @@ class EducationController extends Controller
     }
 
     /**
+     * Displays a form to edit an existing Education entity.
+     *
+     */
+    public function modifyAction()
+    {
+
+        $id = $this->get('security.context')->getToken()->getUser()->getId();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('SyndicateComponentBundle:Education')->findOneBy(array('user'=>$id));
+
+        if (!$entity) {
+            return $this->redirect($this->generateUrl('education_new'));
+        }
+
+        $editForm = $this->createEditForm($entity);
+
+        return $this->render('SyndicateComponentBundle:Education:edit.html.twig', array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView()
+
+        ));
+    }
+
+    /**
      * Creates a form to edit a Education entity.
      *
      * @param Education $entity The entity

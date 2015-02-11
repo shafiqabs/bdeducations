@@ -123,6 +123,28 @@
 
     </ul>
 </li>
+<li {% if 'education' == route  %}{{ 'class="active"' }}{% endif %} >
+    <a href="javascript:;">
+        <i class="fa fa-table"></i>
+        <span class="title">Syndicate</span>
+        {% if 'education' == route  %}
+            <span class="selected"></span>
+            <span class="arrow open"></span>
+        {% else %}
+            <span class="arrow"></span>
+        {% endif %}
+    </a>
+    <ul class="sub-menu">
+
+        <li {% if 'galleries' in route or 'galleryimage' in route  %} class="active" {% endif %}>
+            <a href="{{ path('education') }}">
+                <span class="title">Education</span>
+                <span class="selected"></span>
+            </a>
+        </li>
+
+    </ul>
+</li>
 <li class="">
     <a href="javascript:;">
         <i class="fa fa-cogs"></i>
@@ -155,7 +177,8 @@
 
     </ul>
 </li>
-<li {% if 'education' in route or 'homepage_modify' in route or 'contactpage_modify' in route  %}{{ 'class="active"' }}{% endif %} >
+{% if(app.user.globalOption.subDomain !="") %}
+<li {% if 'education_modify' == route or 'homepage_modify' in route or 'contactpage_modify' in route  %}{{ 'class="active"' }}{% endif %} >
     <a href="javascript:;">
         <i class="fa fa-table"></i>
         <span class="title">Manage Education</span>
@@ -169,7 +192,7 @@
     <ul class="sub-menu">
 
         <li {% if 'education' in route %}{{ 'class="active"' }}{% endif %} >
-            <a href="{{ path('education') }}">
+            <a href="{{ path('education_modify') }}">
 
                 <span class="title"> Education </span>
                 <span class="selected"></span>
@@ -299,10 +322,9 @@
 
     </ul>
 </li>
-
 <li {% if 'galleries' in route or 'galleryimage' in route  %}{{ 'class="active"' }}{% endif %} >
     <a href="javascript:;">
-        <i class="fa fa-gift"></i>
+        <i class="fa fa-cloud-upload"></i>
         <span class="title">Media</span>
         {% if 'galleries' in route or 'galleryimage' in route  %}
             <span class="selected"></span>
@@ -322,6 +344,16 @@
 
     </ul>
 </li>
+{% else %}
+<li {% if 'globaloption_modify' in route %}{{ 'class="active"' }}{% endif %} >
+
+   <a href="{{ path('globaloption_modify') }}">
+       <i class="fa fa-cogs"></i>
+       <span class="title">Option</span>
+       <span class="selected"></span>
+   </a>
+</li>
+{% endif  %}
 </ul>
 
 

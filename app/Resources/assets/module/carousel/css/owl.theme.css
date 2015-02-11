@@ -55,7 +55,7 @@
 	height:16px;
 	position:absolute;
 	left:0px;
-	margin-top:25%;
+    margin-top:0!important;
 }
 
 .next-quote{
@@ -65,10 +65,9 @@
 	width:16px;
 	height:16px;
 	background-size:16px 16px;
-	height:16px;
 	position:absolute;
 	right:0px;
-	margin-top:25%;
+	margin-top:0!important;
 }
 
 @media screen and (orientation:landscape) {
@@ -371,16 +370,17 @@ and (orientation : portrait) {
 }
 
 .homepage-slider-caption p{
-	color:#8f8f8d;
-	padding-left:20px;
+	color: #ffffff;
+	padding-left:10px;
+    line-height:13px;
 }
 
 .homepage-slider-controls{
-	background-color:#000000;
+	background-color:#555;
     position: relative;
     height: 30px!important;
-    opacity: 0.7;
-    top: -19px;
+    opacity: 0.5;
+    top: -60px;
 }
 
 .homepage-slider{

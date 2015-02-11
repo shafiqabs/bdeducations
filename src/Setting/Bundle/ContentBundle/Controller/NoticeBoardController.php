@@ -42,6 +42,7 @@ class NoticeBoardController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $user = $this->get('security.context')->getToken()->getUser();
+            $entity->setSlug($this->get('setting.menuSettingRepo')->urlSlug($entity->getName()));
             $entity->setUser($user);
             $em->persist($entity);
             $em->flush();
@@ -186,6 +187,7 @@ class NoticeBoardController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $entity->setSlug($this->get('setting.menuSettingRepo')->urlSlug($entity->getName()));
             $em->flush();
 
             return $this->redirect($this->generateUrl('noticeboard_edit', array('id' => $id)));

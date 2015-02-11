@@ -22,23 +22,28 @@ class DefaultController extends Controller
             $menusTree = $this->get('setting.menuTreeSettingRepo')->getMenuTree($menus,$subdomain);
 
             $siteEntity = $em->getRepository('SettingToolBundle:SiteSetting')->findOneBy(array('user'=>$user));
+
             if(!empty($siteEntity) && !empty($siteEntity->getMobileTheme() ) ){
                 $themeName = $siteEntity->getMobileTheme()->getFolderName();
             }else{
                 $themeName ='Default';
             }
 
-            $entity = $em->getRepository('SyndicateComponentBundle:'.$syndicate)->findOneBy(array('user'=>$user));
+            $homeEntity = $em->getRepository('SettingContentBundle:HomePage')->findOneBy(array('user'=>$user));
+            $showingListing = $homeEntity->getShowingListing();
+
             if($globalOption->getIsIntro() == 1 ){
                 $page = 'index';
             }else{
                 $page = 'home';
             }
+            $component = $em->getRepository('SyndicateComponentBundle:'.$syndicate)->findOneBy(array('user'=>$user));
             return $this->render('MobileBundle:'.$themeName.':'.$page.'.html.twig',
                 array(
 
                     'menu'  => $menusTree,
-                    'entity'    => $entity
+                    'entity'    => $component,
+
 
                 )
             );
@@ -76,6 +81,7 @@ class DefaultController extends Controller
 
                     'menu'  => $menusTree,
                     'entity'    => $entity
+
 
                 )
             );

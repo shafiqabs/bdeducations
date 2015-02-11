@@ -41,6 +41,7 @@ class AdmissionController extends Controller
         $user = $this->get('security.context')->getToken()->getUser();
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $entity->setSlug($this->get('setting.menuSettingRepo')->urlSlug($entity->getName()));
             $entity ->setUser($user);
             $entity->upload();
             $em->persist($entity);
@@ -182,7 +183,7 @@ class AdmissionController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
-
+            $entity->setSlug($this->get('setting.menuSettingRepo')->urlSlug($entity->getName()));
             $entity->upload();
             $em->flush();
 

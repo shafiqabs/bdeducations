@@ -180,11 +180,13 @@ class MenuGroupingController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->get('security.context')->getToken()->getUser();
-        $data = $this->getDoctrine()->getRepository('SettingAppearanceBundle:MenuGrouping')->getMenuSorting($user,$menuGroup);
+
+        $menus = $em->getRepository('SettingAppearanceBundle:MenuGrouping')->findBy(array('user'=>$user,'parent'=>NULL,'menuGroup'=>$menuGroup),array('sorting'=>'asc'));
+        $menusTree = $this->getDoctrine()->getRepository('SettingAppearanceBundle:MenuGrouping')->getMenuTree($menus);
         $menuGroup = $em->getRepository('SettingAppearanceBundle:MenuGroup')->find($menuGroup);
 
         return $this->render('SettingAppearanceBundle:MenuGrouping:sorting.html.twig', array(
-            'menu' => $data,
+            'menu' => $menusTree,
             'menuGroup' => $menuGroup,
 
 

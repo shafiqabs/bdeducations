@@ -34,6 +34,13 @@ class Event
     /**
      * @var string
      *
+     * @ORM\Column(name="slug", type="string", length=255, nullable=true)
+     */
+    private $slug;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="contactPerson", type="string", length=255, nullable=true)
      */
     private $contactPerson;
@@ -430,5 +437,21 @@ class Event
     public function setPhotoGallery($photoGallery)
     {
         $this->photoGallery = $photoGallery;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
     }
 }

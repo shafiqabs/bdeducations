@@ -31,6 +31,13 @@ class NoticeBoard
     /**
      * @var string
      *
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="content", type="text")
      */
     private $content;
@@ -174,5 +181,21 @@ class NoticeBoard
     public function setCreated($created)
     {
         $this->created = $created;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
     }
 }

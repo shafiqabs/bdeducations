@@ -1,0 +1,30 @@
+contactmessage:
+    path:     /
+    defaults: { _controller: "SettingContentBundle:ContactMessage:index" }
+
+contactmessage_show:
+    path:     /{id}/show
+    defaults: { _controller: "SettingContentBundle:ContactMessage:show" }
+
+contactmessage_new:
+    path:     /new
+    defaults: { _controller: "SettingContentBundle:ContactMessage:new" }
+
+contactmessage_create:
+    path:     /create
+    defaults: { _controller: "SettingContentBundle:ContactMessage:create" }
+    requirements: { _method: post }
+
+contactmessage_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SettingContentBundle:ContactMessage:edit" }
+
+contactmessage_update:
+    path:     /{id}/update
+    defaults: { _controller: "SettingContentBundle:ContactMessage:update" }
+    requirements: { _method: post|put }
+
+contactmessage_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SettingContentBundle:ContactMessage:delete" }
+    requirements: { _method: post|delete }

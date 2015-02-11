@@ -13,15 +13,17 @@ use Doctrine\ORM\EntityRepository;
 class SyndicateContentRepository extends EntityRepository
 {
 
-    public function insertContent($id)
+    public function insertContent($id,$user)
     {
         $em = $this->_em;
         $reEntity = $em->getRepository('SettingToolBundle:Syndicate')->find($id);
 
         if($reEntity){
             $entity = new SyndicateContent();
-            $entity->setSyndicate($reEntity);
+            $entity->setUser($user);
+            //$entity->setSyndicate($reEntity);
             $entity->setName($reEntity->getName());
+            $entity->setSlug($reEntity->getSlug());
             $entity->setStatus(true);
             $em->persist($entity);
             $em->flush();

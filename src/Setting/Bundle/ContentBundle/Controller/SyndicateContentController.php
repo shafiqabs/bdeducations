@@ -41,6 +41,7 @@ class SyndicateContentController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $entity->setSlug($this->get('setting.menuSettingRepo')->urlSlug($entity->getName()));
             $em->persist($entity);
             $em->flush();
 
@@ -131,8 +132,8 @@ class SyndicateContentController extends Controller
         $entity = $em->getRepository('SettingContentBundle:SyndicateContent')->findOneBy(array('syndicate'=>$id));
 
         if (!$entity) {
-
-            $this->getDoctrine()->getRepository('SettingContentBundle:SyndicateContent')->insertContent($id);
+            $user = $this->get('security.context')->getToken()->getUser();
+            $this->getDoctrine()->getRepository('SettingContentBundle:SyndicateContent')->insertContent($id,$user);
             $entity = $em->getRepository('SettingContentBundle:SyndicateContent')->findOneBy(array('syndicate'=>$id));
 
         }
@@ -189,7 +190,7 @@ class SyndicateContentController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
-
+            $entity->setSlug($this->get('setting.menuSettingRepo')->urlSlug($entity->getName()));
             $entity->upload();
             $em->flush();
             $syndicateId = $entity->getSyndicate()->getId();

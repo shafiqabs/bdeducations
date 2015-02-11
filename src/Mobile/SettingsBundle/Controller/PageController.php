@@ -3,6 +3,7 @@
 namespace Mobile\SettingsBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class PageController extends Controller
@@ -61,9 +62,32 @@ class PageController extends Controller
 
     }
 
+    public function contactSubmitAction(Request $request)
+    {
+        $data = $request->request->all();
+        $this->getDoctrine()->getRepository('SettingContentBundle:ContactMessage')->insertMessage($data);
+        $referer = $request->headers->get('referer');
+        return new RedirectResponse($referer);
 
+    }
 
+    public function blogSubmitAction(Request $request)
+    {
+        $data = $request->request->all();
+        $this->getDoctrine()->getRepository('SettingContentBundle:BlogComment')->insertMessage($data);
+        $referer = $request->headers->get('referer');
+        return new RedirectResponse($referer);
 
+    }
+
+    public function admissionSubmitAction(Request $request)
+    {
+        $data = $request->request->all();
+        $this->getDoctrine()->getRepository('SettingContentBundle:AdmissionComment')->insertMessage($data);
+        $referer = $request->headers->get('referer');
+        return new RedirectResponse($referer);
+
+    }
 
 
 }

@@ -44,11 +44,21 @@
                         {{ form_start(form) }}
                         {{ form_row(form._token) }}
                         <div class="form-group">
-                            <label for="item_itemName"  class="control-label col-md-2 required">Title:</label>
+                            <label for="item_itemName"  class="control-label col-md-2 required">Blogger name:</label>
                             <div class="col-md-9 form-group-error">
                                 <div class="input-icon">
                                     {{ form_widget(form.name) }}
                                     {{ form_errors(form.name) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="item_itemName"  class="control-label col-md-2 required">Title:</label>
+                            <div class="col-md-9 form-group-error">
+                                <div class="input-icon">
+                                    {{ form_widget(form.title) }}
+                                    {{ form_errors(form.title) }}
                                 </div>
                             </div>
                         </div>
@@ -82,7 +92,14 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <label for="item_itemName"  class="control-label col-md-2 required">Add Photo gallery:</label>
+                            <div class="col-md-9">
+                                <label class="checkbox line">
+                                    {{ form_widget(form.photo_gallery) }}
+                                </label>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label for="item_itemName"  class="control-label col-md-2 required">Status:</label>

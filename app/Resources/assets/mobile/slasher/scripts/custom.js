@@ -22,7 +22,7 @@ $(window).load(function() {
 
 $(document).ready(function(){
 
-    $("#menu span i.fa").click(function(event){
+    /*$("#menu span i.fa").click(function(event){
         event.preventDefault();
         if($(this).closest('ul').length){
             $(this).parent().next('ul').toggle('fast');
@@ -38,7 +38,7 @@ $(document).ready(function(){
         $('.hide-navigation').show();
         $("#menu").toggleClass("show");
         $('.navigation').animate({
-            top: '60',
+            top: '60'
         }, 300, 'easeInOutQuad', function(){});
         return false;
 
@@ -58,7 +58,7 @@ $(document).ready(function(){
 		$(this).parent().find('.submenu').toggle(150);
 		return false;
 	});
-	
+	*/
 	$('.wide-image a').click(function(){
 		$(this).parent().parent().find('.wide-active').toggle(100);
 	});

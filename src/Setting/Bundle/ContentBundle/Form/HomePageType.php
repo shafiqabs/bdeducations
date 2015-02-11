@@ -103,7 +103,14 @@ class HomePageType extends AbstractType
                     },
 
             ))
-            ->add('sliderType')
+            ->add('showingListing', 'choice', array(
+                'choices'  => array(3 => 3, 5 => 5),
+                'expanded' => true,
+                'multiple' => false,
+                'data'     => 1
+
+            ))
+
         ;
 
     }

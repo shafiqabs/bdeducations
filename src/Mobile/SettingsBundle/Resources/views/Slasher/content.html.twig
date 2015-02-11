@@ -36,14 +36,16 @@
     </div>
 {% endblock %}
 {% block documentready %}
+    {% if page.photoGallery %}
+        $( '#gallery' ).click( function( e ) {
 
-    $( '#gallery' ).click( function( e ) {
         e.preventDefault();
-        $.swipebox( [
-        {% for image in entity.gallery.galleryImages %}
-            { href : '/{{ image.webPath }}', title : '{{ image.caption }}' },
-        {% endfor %}
+            $.swipebox( [
+            {% for image in page.photoGallery.galleryImages %}
+                { href : '/{{ image.webPath }}', title : '{{ image.caption }}' },
+            {% endfor %}
 
-    ] );
-    } );
+        ] );
+        } );
+    {% endif %}
 {% endblock %}

@@ -34,6 +34,13 @@ class News
     /**
      * @var string
      *
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="content", type="text")
      */
     private $content;
@@ -325,6 +332,22 @@ class News
 
         // clean up the file property as you won't need it anymore
         $this->file = null;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
     }
 
 }

@@ -1,0 +1,65 @@
+{% extends ':mobile/slasher:base.html.twig' %}
+{% block body %}
+    {{ include('mobile/slasher/header.html.twig')}}
+    <div class="page-header-clear"></div>
+    <div class="container no-bottom">
+        <h1>Events</h1>
+        <div class="decoration"></div>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <ul id="demo3">
+                                {% for  row in entity.user.news %}
+                                    <li><div class="one-responsive">
+                                            <div class="big-notification blue-notification">
+                                                <h4>{{ row.name }} <br/>Date: [{{ row.startDate|date('d-m-Y') }}-To-{{ row.endDate|date('d-m-Y') }}]</h4>
+                                                <p>{{ row.content }} --<a data-bpopup="{{ row.id }}" class="moduleContent"  href="javascript:"> Read more...</a></p>
+                                            </div>
+                                        </div></li>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer"> </div>
+            </div>
+        </div>
+        <div class="decoration"></div>
+    </div>
+
+{% endblock %}
+{% block javascriptblock %}
+    resizereinit=true;
+    menu[1] = {
+    id:'menu1', //use unique quoted id (quoted) REQUIRED!!
+    fontsize:'100%', // express as percentage with the % sign
+    linkheight:22 ,  // linked horizontal cells height
+    hdingwidth:210 ,  // heading - non linked horizontal cells width
+    // Finished configuration. Use default values for all other settings for this particular menu (menu[1]) ///
+
+    menuItems:[ // REQUIRED!!
+    //[name, link, target, colspan, endrow?] - leave 'link' and 'target' blank to make a header
+    ["Menu"], //create header
+    ["Dynamic Drive", "#item1", ""],
+    ["What's New", "#item2",""],
+    ["What's Hot", "#item3", ""],
+    ["Message Forum", "http://www.dynamicdrive.com/forums", ""],
+    ["Submit Script", "http://www.dynamicdrive.com/submitscript.htm", ""],
+    ["Link to Us", "http://www.dynamicdrive.com/link.htm", ""],
+
+    ["FAQ", "http://www.dynamicdrive.com/faqs.htm", "", 1, "no"], //create two column row, requires d_colspan:2 (the default)
+    ["Email", "http://www.dynamicdrive.com/contact.htm", "",1],
+
+    ["External Links", "", ""], //create header
+    ["JavaScript Kit", "http://www.javascriptkit.com", "_new"],
+    ["Freewarejava", "http://www.freewarejava.com", "_new"],
+    ["Coding Forums", "http://www.codingforums.com", "_new"]  //no comma after last entry
+
+    ]}; // REQUIRED!! do not edit or remove
+    make_menus();
+{% endblock %}
+
+
